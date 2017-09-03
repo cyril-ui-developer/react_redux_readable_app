@@ -10,18 +10,19 @@ export default function PostCard({post, deletePost}) {
           <Icon/> {post.title}
         </Card.Header>
         <Card.Description>
-          <p><Icon/> {post.body}</p>
+          <p>{post.body}</p>
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
-        <div className="ui two buttons">
-           <Link to={`/posts/edit/${post.id}`} className="ui basic button green">Edit</Link>
-          <Button basic color="red">Delete</Button>
-        </div>
+          Comment  <Link to={``} ><Icon name='comment outline'/> </Link>
+           {/* <Link to={`/posts/edit/${post.id}`} className="ui basic button help icon blue">Edit</Link> */}
+          Edit <Link to={`/posts/edit/${post.id}`} className=""><Icon name='edit outline'/>  </Link>
+          Delete <Link to={``} ><Icon name='delete outline'/> </Link>
       </Card.Content>
     </Card>
   )
 }
+
 
 PostCard.propTypes = {
   post: React.PropTypes.object.isRequired
