@@ -54,7 +54,7 @@ case 'FETCH_POST_PENDING': {
 case 'FETCH_POST_FULFILLED': {
   return {
     ...state,
-    postt: action.payload.data,
+    post: action.payload.data,
     errors: {},
     loading: false
   }

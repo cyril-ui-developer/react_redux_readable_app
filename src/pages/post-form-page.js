@@ -73,7 +73,7 @@ function mapStateToProps(state) {
   console.log(state)
   return {
       categories : state.readableStore.categories,
-      posts: state.readableStore.posts,
+      post: state.readableStore.post,
   }
 }
 

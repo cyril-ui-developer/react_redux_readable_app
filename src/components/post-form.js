@@ -28,7 +28,7 @@ componentWillReceiveProps = (nextProps) => { // Receive Contact data Asynchronou
     return (
       <Grid centered columns={2}>
         <Grid.Column>
-           <h1 style={{marginTop:"1em"}}>{post ? 'Edit Post' : 'Add New Post'}</h1>
+           <h1 style={{marginTop:"1em"}}>{post.id ? 'Edit Post' : 'Add New Post'}</h1>
           <Form onSubmit={handleSubmit}>
             <div>
               <select>
