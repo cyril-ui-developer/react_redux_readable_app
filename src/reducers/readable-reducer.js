@@ -81,7 +81,7 @@ case 'UPDATE_POST_FULFILLED': {
 case 'FETCH_CATEGORYPOSTS_FULFILLED': {
   return {
     ...state,
-    categoryPosts: [...state.categoryPosts, action.payload.data],
+    categoryPosts: action.payload.data,
     errors: {},
     loading: false
   }

@@ -8,10 +8,14 @@ import  CategoryPostList  from '../components/category-posts-list';
 class CategoryPostPage extends Component {
 
   componentDidMount() {
-    this.props.fetchCategoryPosts('react');
+    
+  const { name } = this.props.match.params;
+    this.props.fetchCategoryPosts(name);
   }
 
+
   render() {
+    console.log(this.props.categoryPosts)
     return (
       <div>
         <h1>List of Category Post</h1>

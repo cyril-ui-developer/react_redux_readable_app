@@ -4,8 +4,10 @@ import { Link , Route} from 'react-router-dom';
 import  CategoryPostList  from './category-posts-list';
 
 export default function CategoryCard({category}) {
+  console.log(category.name)
   return (
     <Card>
+      
       <Link to={`/${category.name}/posts`}  className="ui basic button green">{category.name}</Link>
     </Card>
   )
