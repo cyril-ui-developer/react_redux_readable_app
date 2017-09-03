@@ -2,6 +2,7 @@ import { client } from './';
 
 const url = '/categories';
 const urlPosts = '/posts';
+const urlCatPosts = '/posts';
 
 export function fetchCategories(){
   return dispatch => {
@@ -52,6 +53,15 @@ export function updatePost(post) {
     return dispatch({
       type: 'UPDATE_POST',
       payload: client.put(`${urlPosts}/${post.id}`, post)
+    })
+  }
+}
+
+export function fetchCategoryPosts(cat) {
+  return dispatch => {
+    return dispatch({
+      type: 'FETCH_CATEGORYPOSTS',
+      payload: client.get(`${cat}${urlCatPosts}`)
     })
   }
 }

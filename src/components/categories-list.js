@@ -1,20 +1,21 @@
 import React from 'react';
+import { Card, Button, Icon } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
+import CategoryCard from './category-card';
 
 export default function CategoriesList({categories}){
 console.log(categories)
-  const list = () => {
+  const categoriesList = () => {
     return categories.map(cat => {
       return (
-        <li key={cat.name}>{cat.name}</li>
+           <CategoryCard key={cat.name} category={cat}/>
       )
     })
   }
 
   return (
-    <div>
-      <ul>
-        { list() }
-      </ul>
-    </div>
+    <Card.Group>
+      { categoriesList() }
+    </Card.Group>
   )
 }

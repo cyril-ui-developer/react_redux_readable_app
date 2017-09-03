@@ -3,6 +3,7 @@ import { NavLink, Route } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import RootPage from './pages/root-page';
 import PostFormPage from './pages/post-form-page';
+import  CategoryPostPage  from './pages/category-posts-page';
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
         <Route exact path="/" component={RootPage}/>
         <Route path="/posts/new" component={PostFormPage}/>
         <Route path="/posts/edit/:id" component={PostFormPage}/>
+        <Route path="/:name/posts" component={CategoryPostPage}/>
       </Container>
     );
   }
