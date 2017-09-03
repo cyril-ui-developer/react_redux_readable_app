@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import CategoryCard from './category-card';
 
 export default function CategoriesList({categories}){
-console.log(categories)
   const categoriesList = () => {
     return categories.map(cat => {
       return (

@@ -10,24 +10,24 @@ class CategoryPostPage extends Component {
   componentDidMount() {
     
   const { name } = this.props.match.params;
+  let pageTitle = name;
+   console.log(pageTitle)
     this.props.fetchCategoryPosts(name);
   }
 
 
   render() {
-    console.log(this.props.categoryPosts)
+   
     return (
       <div>
-        <h1>List of Category Post</h1>
+        <h1>List of  Category Posts</h1>
         <CategoryPostList catPosts={this.props.categoryPosts}/>
       </div>
     )
   }
 }
 
-// Make contacts  array available in  props
 function mapStateToProps(state) {
-  console.log(state)
   return {
       categoryPosts: state.readableStore.categoryPosts
   }

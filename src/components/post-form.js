@@ -7,9 +7,9 @@ import classnames from 'classnames';
 
 class PostForm extends Component {
 
-componentWillReceiveProps = (nextProps) => { // Receive Contact data Asynchronously
+componentWillReceiveProps = (nextProps) => { 
   const { post } = nextProps;
-  if(post.id !== this.props.post.id) { // Initialize form only once
+  if(post.id !== this.props.post.id) { 
     this.props.initialize(post)
   }
 }
