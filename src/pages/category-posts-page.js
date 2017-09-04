@@ -20,7 +20,7 @@ class CategoryPostPage extends Component {
    
     return (
       <div>
-        <h1>List of  Category Posts</h1>
+        <h1>List of {this.pageTitle} Category Posts</h1>
         <CategoryPostList catPosts={this.props.categoryPosts}/>
       </div>
     )

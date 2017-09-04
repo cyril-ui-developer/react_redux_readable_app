@@ -7,7 +7,7 @@ export default function PostCard({post, deletePost}) {
     <Card>
       <Card.Content>
         <Card.Header>
-        {post.title}
+           <Link to={`/posts/${post.id}`}  className="ui basic button green">  {post.title}</Link>
         </Card.Header>
         <Card.Description>
           <p>{post.body}</p>
@@ -15,7 +15,7 @@ export default function PostCard({post, deletePost}) {
       </Card.Content>
       <Card.Content extra>
           Comment  <Link to={``} ><Icon name='comment outline'/> </Link>
-          Edit <Link to={`/posts/edit/${post.id}`} className=""><Icon name='edit outline'/>  </Link>
+          Edit <Link to={`/posts/edit/${post.id}`}> <Icon name='edit outline'/>  </Link>
           Delete <Link to={``} ><Icon name='delete outline'/> </Link>
       </Card.Content>
     </Card>

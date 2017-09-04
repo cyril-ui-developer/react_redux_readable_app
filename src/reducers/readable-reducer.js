@@ -3,6 +3,7 @@ const defaultState = {
   posts:[],
   post: {},
   categoryPosts:[],
+  postDetails:{},
   loading: false,
   errors: {}
 }
@@ -82,6 +83,15 @@ case 'FETCH_CATEGORYPOSTS_FULFILLED': {
   return {
     ...state,
     categoryPosts: action.payload.data,
+    errors: {},
+    loading: false
+  }
+}
+
+case 'FETCH_POSTDETAILS_FULFILLED': {
+  return {
+    ...state,
+    postDetails: action.payload.data,
     errors: {},
     loading: false
   }

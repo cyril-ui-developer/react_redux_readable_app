@@ -3,6 +3,7 @@ import { client } from './';
 const url = '/categories';
 const urlPosts = '/posts';
 const urlCatPosts = '/posts';
+const urlPostDetails = '/posts';
 
 export function fetchCategories(){
   return dispatch => {
@@ -62,6 +63,15 @@ export function fetchCategoryPosts(cat) {
     return dispatch({
       type: 'FETCH_CATEGORYPOSTS',
       payload: client.get(`${cat}${urlCatPosts}`)
+    })
+  }
+}
+
+export function fetchPostDetails(id) {
+  return dispatch => {
+    return dispatch({
+      type: 'FETCH_POSTDETAILS',
+      payload: client.get(`${urlPostDetails}/${id}`)
     })
   }
 }

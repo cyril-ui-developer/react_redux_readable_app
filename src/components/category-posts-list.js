@@ -8,7 +8,9 @@ console.log(catPosts)
   const cards = () => {
     return catPosts.map(cat => {
       return (
-         <PostCard key={cat.title} post={cat}/>
+        <div>
+          <PostCard key={cat.title} post={cat}/>
+        </div>
       )
     })
   }

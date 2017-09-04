@@ -4,6 +4,7 @@ import { Container } from 'semantic-ui-react';
 import RootPage from './pages/root-page';
 import PostFormPage from './pages/post-form-page';
 import  CategoryPostPage  from './pages/category-posts-page';
+import  PostDetailsPage  from './pages/post-details-page';
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
         <Route path="/posts/new" component={PostFormPage}/>
         <Route path="/posts/edit/:id" component={PostFormPage}/>
         <Route path="/:name/posts" component={CategoryPostPage}/>
+        <Route path="/posts/:id" component={PostDetailsPage}/>
       </Container>
     );
   }
