@@ -66,12 +66,3 @@ export function fetchCategoryPosts(cat) {
     })
   }
 }
-
-export function fetchPostDetails(id) {
-  return dispatch => {
-    return dispatch({
-      type: 'FETCH_POSTDETAILS',
-      payload: client.get(`${urlPostDetails}/${id}`)
-    })
-  }
-}

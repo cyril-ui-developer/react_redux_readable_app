@@ -29,12 +29,6 @@ export default (state=defaultState, action={}) => {
       }
     }
 
-    case 'SAVE_POST_PENDING': {
-      return {
-        ...state,
-        loading: true
-      }
-    }
 
     case 'SAVE_POST_FULFILLED': {
       return {
@@ -45,58 +39,35 @@ export default (state=defaultState, action={}) => {
       }
     }
 
-case 'FETCH_POST_PENDING': {
-  return {
-    ...state,
-    loading: true,
-    post: {}
-  }
-}
+    case 'FETCH_POST_FULFILLED': {
+      return {
+        ...state,
+        post: action.payload.data
+    
+      }
+    }
 
-case 'FETCH_POST_FULFILLED': {
-  return {
-    ...state,
-    post: action.payload.data,
-    errors: {},
-    loading: false
-  }
-}
 
-case 'UPDATE_POST_PENDING': {
-  return {
-    ...state,
-    loading: true
-  }
-}
+    case 'UPDATE_POST_FULFILLED': {
+      const post = action.payload.data;
+      return {
+        ...state,
+        posts: state.posts.map(item => item.id === post.id ? post: item),
+        errors: {},
+        loading: false
+      }
+    }
 
-case 'UPDATE_POST_FULFILLED': {
-  const post = action.payload.data;
-  return {
-    ...state,
-    posts: state.posts.map(item => item.id === post.id ? post: item),
-    errors: {},
-    loading: false
-  }
-}
+    case 'FETCH_CATEGORYPOSTS_FULFILLED': {
+      return {
+        ...state,
+        categoryPosts: action.payload.data,
+        errors: {},
+        loading: false
+      }
+    }
 
-case 'FETCH_CATEGORYPOSTS_FULFILLED': {
-  return {
-    ...state,
-    categoryPosts: action.payload.data,
-    errors: {},
-    loading: false
-  }
-}
-
-case 'FETCH_POSTDETAILS_FULFILLED': {
-  return {
-    ...state,
-    postDetails: action.payload.data,
-    errors: {},
-    loading: false
-  }
-}
-    default:
-      return state;
-  }
+        default:
+          return state;
+      }
 }
