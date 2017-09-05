@@ -5,6 +5,7 @@ import PostList from '../components/posts-list';
 import { fetchPost } from '../actions/action';
 import  CategoryPostList  from '../components/category-posts-list';
 import  PostDetails  from '../components/post-details';
+import { NavLink, Route } from 'react-router-dom';
 
 class PostDetailsPage extends Component {
 
@@ -21,6 +22,7 @@ class PostDetailsPage extends Component {
    
     return (
       <div>
+        <NavLink className='close-create-contact' to='/'>Back</NavLink>
         <h1>Post Detail</h1>
         <PostDetails postDetails={this.props.post}/>
       </div>

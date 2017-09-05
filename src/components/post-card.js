@@ -11,12 +11,14 @@ export default function PostCard({post, deletePost}) {
         </Card.Header>
         <Card.Description>
           <p>{post.body}</p>
+          <p>{post.voteScore}</p>
+          <p>{post.timestamp}</p>
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
-          Comment  <Link to={``} ><Icon name='comment outline'/> </Link>
-          Edit <Link to={`/posts/edit/${post.id}`}> <Icon name='edit outline'/>  </Link>
-          Delete <Link to={``} ><Icon name='delete outline'/> </Link>
+          <Link to={``} ><Icon name='comment outline'/>Comment(10)</Link> 
+          <Link to={`/posts/edit/${post.id}`}> <Icon name='edit outline'/> </Link>
+          <Link to={``} ><Icon name='delete outline'/> </Link>
       </Card.Content>
     </Card>
   )

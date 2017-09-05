@@ -1,10 +1,10 @@
 import React, { Component} from 'react';
 import PostForm from '../components/post-form';
-import { fetchCategories } from '../actions/action';
 import { connect } from 'react-redux';
-import { newPost, savePost, updatePost, fetchPost } from '../actions/action';
+import { newPost, savePost, updatePost, fetchPost, fetchCategories } from '../actions/action';
 import { SubmissionError } from 'redux-form';
 import { Redirect } from 'react-router';
+import _  from 'lodash';
 
 class PostFormPage extends Component {
 
@@ -13,7 +13,7 @@ class PostFormPage extends Component {
   }
 
   componentDidMount() {
-    // this.props.fetchCategories();
+    this.props.fetchCategories();
     // this.props.newPost();
     console.log(this.props.match.params)
   const { id } = this.props.match.params;
@@ -40,6 +40,11 @@ class PostFormPage extends Component {
 
 submit = (post) => {
   if(!post.id) {
+   
+    let uniqueId =  _.uniqueId('readable_app_');;
+    let datetime = Date.now();
+    post.id = guid();
+    post.timestamp = datetime;
     return this.props.savePost(post)
       .then(response => this.setState({ redirect:true }))
       .catch(err => {
@@ -75,6 +80,16 @@ function mapStateToProps(state) {
       categories : state.readableStore.categories,
       post: state.readableStore.post,
   }
+}
+
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+    s4() + '-' + s4() + s4() + s4();
 }
 
 //export default PostFormPage;

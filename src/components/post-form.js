@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { Form, Grid, Button } from 'semantic-ui-react';
 import { Field, reduxForm } from 'redux-form';
+import { NavLink, Route } from 'react-router-dom';
 import classnames from 'classnames';
 
 
@@ -14,6 +15,7 @@ componentWillReceiveProps = (nextProps) => {
   }
 }
 
+
   renderField = ({ input, label, type, meta: { touched, error } }) => (
     <Form.Field className={classnames({error:touched && error})}>
       <label>{label}</label>
@@ -21,32 +23,62 @@ componentWillReceiveProps = (nextProps) => {
       {touched && error && <span className="error">{error.message}</span>}
     </Form.Field>
   )
+ renderTextareaField = ({ input, label, type, meta: { touched, error } }) => (
+    <Form.Field>
+      <textarea {...input} />
+      {touched && error && <span className="error">{error.message}</span>}
+    </Form.Field>
+  )
+ renderSelectField = ({ input, option, label, type, meta: { touched, error } }) => (
+    <Form.Field>
+      <select {...input}  option={option}/>
+      {touched && error && <span className="error">{error.message}</span>}
+    </Form.Field>
+  )
 
   render() {
+   // const  { DOM: { input, select, textarea } } = React
     const { handleSubmit, pristine, submitting, post} = this.props;
-   console.log(post)
+    this.props.handleSubmit.timestamp= Date.now();
+   // console.log(form)
     return (
       <Grid centered columns={2}>
         <Grid.Column>
+          <NavLink className='close-create-contact' to='/'>Back</NavLink> 
            <h1 style={{marginTop:"1em"}}>{post.id ? 'Edit Post' : 'Add New Post'}</h1>
           <Form onSubmit={handleSubmit}>
-            <div>
-              <select>
+             {/* <div>
+              <select >
                   <option value="">Select a categories...</option>
                     {this.props.categories.map(val =>
-                      <option name="category"  value={val.name} key={val.name} >
+                      <option name="category"  value={val.name} key={val.name}  >
                         {val.name}
                    </option>
                     )}
                   </select>
                   {}
+                </div> 
+               <div>
+                <label>Select Category</label>
+                <div>
+                  <Field name="category" component={this.renderSelectField}>
+                    <option></option>
+                    <option value="react">React</option>
+                    <option value="redux">Redux</option>
+                    <option value="udacity">Udacity</option>
+                  </Field>
                 </div>
-
+              </div>  */}
+              {/* <Field name="id" type="text"  component={this.renderField} label="id"/> */}
+             <Field name="category" type="text"  component={this.renderField} label="Category"/> 
             <Field name="title" type="text" component={this.renderField} label="Title"/>
-            <Field name="body" type="text" component={this.renderField} label="Enter post content"/>
-            {/*<textarea name="body" row="3" placeholder="Enter post content"></textarea>*/}
-            <Field name="author" type="text" component={this.renderField} label="Author"/>
+            {/* <Field name="body" type="text" component={this.renderField} label="Enter post content"/> */}
+            <Field name="body" component={this.renderTextareaField}/>
+       
+            <Field name="author" type="text"  component={this.renderField} label="Author"/>
+             {/* <Field name="timestamp" type="datetime"  component={this.renderField} label="timestamp"/>  */}
             <Button primary type='submit' disabled={pristine || submitting}>Save</Button>
+            
           </Form>
         </Grid.Column>
       </Grid>
