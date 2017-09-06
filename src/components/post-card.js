@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, Icon } from 'semantic-ui-react'
+import { Card, Button, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 export default function PostCard({post, deletePost}) {
@@ -15,11 +15,11 @@ export default function PostCard({post, deletePost}) {
           <p>{post.timestamp}</p>
         </Card.Description>
       </Card.Content>
-      <Card.Content extra>
+      {/* <Card.Content extra>
           <Link to={``} ><Icon name='comment outline'/>Comment(10)</Link> 
           <Link to={`/posts/edit/${post.id}`}> <Icon name='edit outline'/> </Link>
           <Link to={``} ><Icon name='delete outline'/> </Link>
-      </Card.Content>
+      </Card.Content> */}
     </Card>
   )
 }

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Card } from 'semantic-ui-react';
 import PostCard from './post-card';
 import Moment from 'react-moment';
-
+import { Link } from 'react-router-dom';
+import { Card, Button, Icon } from 'semantic-ui-react';
 
 export default function PostDetails({postDetails, commentDetails}){
 
@@ -13,21 +13,25 @@ console.log(commentDetails)
   const cards = () => {
       return (
         // <PostCard key={post.title} post={post}/>
-        <div>
-       <h3 className="ui block header">
-         Title: {postDetails.title}
-        </h3>
-       <button onClick={()=>{postDetails.voteScore= postDetails.voteScore + 1} }>+</button>
-        <span> {postDetails.voteScore} </span>
-        <button onClick={()=>{postDetails.voteScore= postDetails.voteScore - 1} }>-</button>
-        <span> Comments ({commentDetails.length})</span>
-        <p>Content: {postDetails.title} </p>
-        <p>Category: {postDetails.category} </p>
-        <p>Author: {postDetails.author} </p>
-        <p>Date / Time: <Moment> {postDetails.timestamp} </Moment></p>
-
-       
-         </div>
+      <div>
+        <h3>
+          Title: {postDetails.title}
+          </h3>
+          <p>Content: {postDetails.title} </p>
+          <p>Category: {postDetails.category} </p>
+          <p>Author: {postDetails.author} </p>
+          <p>Date / Time: <Moment> {postDetails.timestamp} </Moment></p>
+          <Card>
+            <Card.Content extra>
+            <button onClick={()=>{postDetails.voteScore= postDetails.voteScore + 1} }>+</button>
+            <span> {postDetails.voteScore} </span>
+            <button onClick={()=>{postDetails.voteScore= postDetails.voteScore - 1} }>-</button>
+            <Icon name='outline'/>Comment({commentDetails.length})
+            <Link to={`/posts/edit/${postDetails.id}`}> <Icon name='edit outline'/> </Link>
+            <Link to={``} ><Icon name='delete outline'/> </Link>
+            </Card.Content>
+          </Card>
+        </div>
       )
   }
 

@@ -44,7 +44,7 @@ componentWillReceiveProps = (nextProps) => {
     return (
       <Grid centered columns={2}>
         <Grid.Column>
-          <NavLink className='close-create-contact' to='/'>Back</NavLink> 
+          <NavLink className='close-create-contact' to={`/posts/details/${post.id}`}>Back</NavLink> 
            <h1 style={{marginTop:"1em"}}>{post.id ? 'Edit Post' : 'Add New Post'}</h1>
           <Form onSubmit={handleSubmit}>
              {/* <div>

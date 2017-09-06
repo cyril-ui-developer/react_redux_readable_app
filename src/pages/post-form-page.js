@@ -23,34 +23,19 @@ class PostFormPage extends Component {
 
   componentDidMount() {
     this.props.fetchCategories();
-    // this.props.newPost();
     console.log(this.props.match.params)
-  const { id } = this.props.match.params;
-  if(id){
-   this.props.fetchPost(id)
-    // console.log(this.props.fetchPost(id))
-    // this.props.fetchPost(id)
-    //   .then(data => this.setState({ post: data}))
-    //   .catch(err => {
-    //  //    throw new SubmissionError(this.props.errors)
-    //    })
-  } else {
-    this.props.newPost();
+    const { id } = this.props.match.params;
+    if(id){
+    this.props.fetchPost(id)
+    } else {
+      this.props.newPost();
+    }
   }
-  }
-  //   submit = (post) => {
- 
-  //   return this.props.savePost(post)
-  //     .then(response => this.setState({ redirect:true }))
-  //     .catch(err => {
-  //        throw new SubmissionError(this.props.errors)
-  //      })
-  // }
+  
 
 submit = (post) => {
   if(!post.id) {
-   
-    // let uniqueId =  _.uniqueId('readable_app_');;
+
     let datetime = Date.now();
     post.id = this.uniqueId();
     post.timestamp = datetime;
@@ -82,7 +67,7 @@ submit = (post) => {
   }
 
 }
-// Make contacts  array available in  props
+
 function mapStateToProps(state) {
   console.log(state)
   return {
@@ -91,6 +76,4 @@ function mapStateToProps(state) {
   }
 }
 
-
-//export default PostFormPage;
 export default connect(mapStateToProps, {fetchCategories, newPost, savePost, fetchPost, updatePost})(PostFormPage);
