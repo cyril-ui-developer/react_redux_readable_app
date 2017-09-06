@@ -11,6 +11,15 @@ class PostFormPage extends Component {
   state = {
     redirect: false
   }
+  uniqueId = () => {
+    function randomNumber() {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
+    return randomNumber() + randomNumber() + '-' + randomNumber() + '-' + randomNumber() + '-' +
+      randomNumber() + '-' + randomNumber() + randomNumber() + randomNumber();
+  }
 
   componentDidMount() {
     this.props.fetchCategories();
@@ -43,7 +52,7 @@ submit = (post) => {
    
     let uniqueId =  _.uniqueId('readable_app_');;
     let datetime = Date.now();
-    post.id = guid();
+    post.id = this.uniqueId();
     post.timestamp = datetime;
     return this.props.savePost(post)
       .then(response => this.setState({ redirect:true }))
@@ -82,15 +91,6 @@ function mapStateToProps(state) {
   }
 }
 
-function guid() {
-  function s4() {
-    return Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
-  }
-  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-    s4() + '-' + s4() + s4() + s4();
-}
 
 //export default PostFormPage;
 export default connect(mapStateToProps, {fetchCategories, newPost, savePost, fetchPost, updatePost})(PostFormPage);
