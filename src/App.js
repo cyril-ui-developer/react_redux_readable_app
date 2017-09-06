@@ -23,6 +23,7 @@ class App extends Component {
         <Route path="/posts/edit/:id" component={PostFormPage}/>
         <Route path="/:name/posts" component={CategoryPostPage}/>
         <Route path="/posts/details/:id" component={PostDetailsPage}/>
+        
       </Container>
     );
   }

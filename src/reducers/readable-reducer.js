@@ -5,7 +5,8 @@ const defaultState = {
   categoryPosts:[],
   postDetails:{},
   loading: false,
-  errors: {}
+  errors: {},
+  comments:[],
 }
 
 export default (state=defaultState, action={}) => {
@@ -64,6 +65,22 @@ export default (state=defaultState, action={}) => {
         categoryPosts: action.payload.data,
         errors: {},
         loading: false
+      }
+    }
+
+  case 'SAVE_COMMENT_FULFILLED': {
+      return {
+        ...state,
+        comments: [...state.comments, action.payload.data],
+        errors: {},
+        loading: false
+      }
+    }
+
+    case "FETCH_COMMENTS_FULFILLED": {
+      return {
+        ...state,
+        comments: action.payload.data
       }
     }
 

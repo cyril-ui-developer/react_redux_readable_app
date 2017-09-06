@@ -4,6 +4,7 @@ const url = '/categories';
 const urlPosts = '/posts';
 const urlCatPosts = '/posts';
 const urlPostDetails = '/posts';
+const urlComments = '/posts';
 
 export function fetchCategories(){
   return dispatch => {
@@ -63,6 +64,50 @@ export function fetchCategoryPosts(cat) {
     return dispatch({
       type: 'FETCH_CATEGORYPOSTS',
       payload: client.get(`${cat}${urlCatPosts}`)
+    })
+  }
+}
+
+export function fetchComments(id){
+  return dispatch => {
+    dispatch({
+      type: 'FETCH_COMMENTS',
+      payload: client.get(`${urlPosts}/${id}/comments`)
+    })
+  }
+}
+
+export function newComment() {
+  return dispatch => {
+    dispatch({
+      type: 'NEW_COMMENT'
+    })
+  }
+}
+
+export function saveComment(comment) {
+  return dispatch => {
+    return dispatch({
+      type: 'SAVE_COMMENT',
+      payload: client.post(`/comments`, comment)
+    })
+  }
+}
+
+export function fetchComment(id) {
+  return dispatch => {
+    return dispatch({
+      type: 'FETCH_COMMENT',
+      payload: client.get(`/comments/${id}`)
+    })
+  }
+}
+
+export function updateComment(comment) {
+  return dispatch => {
+    return dispatch({
+      type: 'UPDATE_COMMENT',
+      payload: client.put(`${urlPosts}/${comment.id}`, comment)
     })
   }
 }

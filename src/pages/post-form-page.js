@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { newPost, savePost, updatePost, fetchPost, fetchCategories } from '../actions/action';
 import { SubmissionError } from 'redux-form';
 import { Redirect } from 'react-router';
-import _  from 'lodash';
+// import _  from 'lodash';
 
 class PostFormPage extends Component {
 
@@ -50,7 +50,7 @@ class PostFormPage extends Component {
 submit = (post) => {
   if(!post.id) {
    
-    let uniqueId =  _.uniqueId('readable_app_');;
+    // let uniqueId =  _.uniqueId('readable_app_');;
     let datetime = Date.now();
     post.id = this.uniqueId();
     post.timestamp = datetime;
