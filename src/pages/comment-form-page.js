@@ -1,12 +1,12 @@
 import React, { Component} from 'react';
-import PostForm from '../components/post-form';
+import CommentForm from '../components/comment-form';
 import { connect } from 'react-redux';
-import { newPost, savePost, updatePost, fetchPost, fetchCategories } from '../actions/action';
+import { newComment, saveComment, fetchPost, updateComment, fetchComment } from '../actions/action';
 import { SubmissionError } from 'redux-form';
 import { Redirect } from 'react-router';
 // import _  from 'lodash';
 
-class PostFormPage extends Component {
+class CommentFormPage extends Component {
 
   state = {
     redirect: false
@@ -22,29 +22,30 @@ class PostFormPage extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchCategories();
     console.log(this.props.match.params)
     const { id } = this.props.match.params;
     if(id){
-    this.props.fetchPost(id)
+    this.props.fetchComment(id)
     } else {
-      this.props.newPost();
+      this.props.newComment();
     }
   }
   
 
-submit = (post) => {
-  if(!post.id) {
+submit = (comment) => {
+  if(!comment.id) {
     let datetime = Date.now();
-    post.id = this.uniqueId();
-    post.timestamp = datetime;
-    return this.props.savePost(post)
-      .then(response => this.setState({ redirect:false }))
+    comment.id = this.uniqueId();
+    comment.timestamp = datetime;
+    comment.parentId= this.props.post.id;
+
+    return this.props.saveComment(comment)
+      .then(response => this.setState({ redirect:true }))
       .catch(err => {
          throw new SubmissionError(this.props.errors)
        })
   } else {
-    return this.props.updatePost(post)
+    return this.props.updateComment(comment)
       .then(response => this.setState({ redirect:true }))
       .catch(err => {
          throw new SubmissionError(this.props.errors)
@@ -53,15 +54,13 @@ submit = (post) => {
 }
 
   render() {
-
     return (
       <div>
-          {/* <Redirect to={`/posts/details/${this.props.post.id}`} />  */}
         {
-          this.state.redirect ? <Redirect to={`/`} />
-        : <PostForm categories={this.props.categories} post={this.props.post} onSubmit={this.submit} />
+          this.state.redirect ?
+          <Redirect to="/" /> :
+          <CommentForm  post={this.props.post} comment={this.props.comment} onSubmit={this.submit} />
         }
-        
       </div>
     )
   }
@@ -69,10 +68,11 @@ submit = (post) => {
 }
 
 function mapStateToProps(state) {
+  console.log(state)
   return {
-      categories : state.readableStore.categories,
       post: state.readableStore.post,
+      comment: state.readableStore.comment,
   }
 }
 
-export default connect(mapStateToProps, {fetchCategories, newPost, savePost, fetchPost, updatePost})(PostFormPage);
+export default connect(mapStateToProps, {newComment, fetchComment, saveComment, fetchPost, updateComment})(CommentFormPage);

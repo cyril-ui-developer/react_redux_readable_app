@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import CategoriesList from '../components/categories-list';
 import PostList from '../components/posts-list';
-import { fetchPost , saveComment, updateComment, fetchComments} from '../actions/action';
+import { fetchPost , saveComment, updateComment, fetchComments, deletePost} from '../actions/action';
 import  CategoryPostList  from '../components/category-posts-list';
 import  PostDetails  from '../components/post-details';
 import  CommentDetails from '../components/comment-details'
@@ -11,7 +11,9 @@ import CommentForm from '../components/comment-form';
 import { SubmissionError } from 'redux-form';
 import { Redirect } from 'react-router';
 import PostCard from '../components/post-card';
-import { Card } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { Card, Button, Icon } from 'semantic-ui-react';
+
 
 class PostDetailsPage extends Component {
 
@@ -59,18 +61,20 @@ class PostDetailsPage extends Component {
   }
 
 
-  render() {
 
+  render() {
+  let singleComment;
    console.log(this.props.comments)
     return (
       <div>
         <NavLink className='close-create-contact' to='/'>Back</NavLink>
          <h1>Post Detail</h1>
-         <PostDetails postDetails={this.props.post} commentDetails={this.props.comments} />
-         
-         <CommentForm parentId={this.props.post} onSubmit={this.submit} />
-         <CommentDetails commentDetails={this.props.comments} /> 
-       
+         <PostDetails postDetails={this.props.post} commentDetails={this.props.comments}  deletePost={this.props.deletePost}/>        
+         {/* <CommentForm parentId={this.props.post} onSubmit={this.submit} comment={this.props.comment}/> */}
+         <br />   <br />   <br />
+         <Link to={`/newcomment`}>  Add New Comment </Link>
+         <CommentDetails parentId={this.props.post} commentDetails={this.props.comments}  onBookShelf={(comment) => {
+             }} />      
           {this.state.redirect ?
           <Redirect to="/" /> :null}
        </div>
@@ -87,4 +91,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {fetchPost, saveComment, updateComment, fetchComments})(PostDetailsPage);
+export default connect(mapStateToProps, {fetchPost, deletePost, saveComment, updateComment, fetchComments})(PostDetailsPage);

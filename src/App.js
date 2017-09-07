@@ -5,6 +5,7 @@ import RootPage from './pages/root-page';
 import PostFormPage from './pages/post-form-page';
 import  CategoryPostPage  from './pages/category-posts-page';
 import  PostDetailsPage  from './pages/post-details-page';
+import CommentFormPage from './pages/comment-form-page';
 
 class App extends Component {
   render() {
@@ -23,6 +24,8 @@ class App extends Component {
         <Route path="/posts/edit/:id" component={PostFormPage}/>
         <Route path="/:name/posts" component={CategoryPostPage}/>
         <Route path="/posts/details/:id" component={PostDetailsPage}/>
+        <Route path="/newcomment" component={CommentFormPage}/> 
+        <Route path="/comments/:id" component={CommentFormPage}/> 
         
       </Container>
     );

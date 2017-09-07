@@ -31,7 +31,7 @@ class RootPage extends Component {
         <CategoriesList categories={this.props.categories}/>
           <h1>List of Posts</h1>
       <button onClick={this.asc}>ASC </button>
-        <PostList posts={postsData}/>
+        <PostList posts={postsData} />
       </div>
     )
   }

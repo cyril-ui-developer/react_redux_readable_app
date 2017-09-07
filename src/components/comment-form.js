@@ -10,9 +10,9 @@ class CommentForm extends Component {
 
 componentWillReceiveProps = (nextProps) => { 
   const { comment } = nextProps;
-//   if(post.id !== this.props.post.id) { 
-//     this.props.initialize(post)
-//   }
+  if(comment.id !== this.props.comment.id) { 
+    this.props.initialize(comment)
+  }
 }
 
 
@@ -37,13 +37,13 @@ componentWillReceiveProps = (nextProps) => {
   )
 
   render() {
-    const { handleSubmit, pristine, submitting, post, commentId} = this.props;
+    const { handleSubmit, pristine, submitting, comment} = this.props;
     return (
       <Grid columns={3}>
         <Grid.Column>
-            <hr/> <hr/>
-            <h3>Add New Comment</h3>
-           {/* <h1 style={{marginTop:"1em"}}>{commentId.id ? 'Edit Post' : 'Add New Post'}</h1> */}
+        <NavLink className='close-create-contact' to={`/posts/details/${comment.parentId}`}>Back</NavLink> 
+
+         <h1 style={{marginTop:"1em"}}>{comment.parentId? 'Edit Comment' : 'Add New Comment'}</h1>  
           <Form onSubmit={handleSubmit}>       
             <Field name="body" component={this.renderTextareaField}/>    
             <Field name="author" type="text"  component={this.renderField} label="Author"/>

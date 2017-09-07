@@ -107,7 +107,17 @@ export function updateComment(comment) {
   return dispatch => {
     return dispatch({
       type: 'UPDATE_COMMENT',
-      payload: client.put(`${urlPosts}/${comment.id}`, comment)
+      payload: client.put(`/comments/${comment.id}`, comment)
+    })
+  }
+}
+
+export function deletePost(id) {
+  const obj = {deleted:true}
+  return dispatch => {
+    return dispatch({
+      type: 'DELETE_POST',
+      payload: client.delete(`/posts/${id}`, obj)
     })
   }
 }
