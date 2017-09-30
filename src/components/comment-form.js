@@ -38,17 +38,16 @@ componentWillReceiveProps = (nextProps) => {
 
   render() {
     const { handleSubmit, pristine, submitting, comment} = this.props;
+    console.log(handleSubmit)
     return (
       <Grid columns={3}>
         <Grid.Column>
         <NavLink className='close-create-contact' to={`/posts/details/${comment.parentId}`}>Back</NavLink> 
-
          <h1 style={{marginTop:"1em"}}>{comment.parentId? 'Edit Comment' : 'Add New Comment'}</h1>  
           <Form onSubmit={handleSubmit}>       
             <Field name="body" component={this.renderTextareaField}/>    
             <Field name="author" type="text"  component={this.renderField} label="Author"/>
-            <Button primary type='submit' disabled={pristine || submitting}>Save</Button>
-            
+            <Button primary type='submit' disabled={pristine || submitting}>Save</Button>    
           </Form>
         </Grid.Column>
       </Grid>

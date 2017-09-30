@@ -54,11 +54,12 @@ submit = (comment) => {
 }
 
   render() {
+        const { post} = this.props;
     return (
       <div>
         {
           this.state.redirect ?
-          <Redirect to="/" /> :
+          <Redirect to={`/posts/details/${post.id}`} /> :
           <CommentForm  post={this.props.post} comment={this.props.comment} onSubmit={this.submit} />
         }
       </div>
