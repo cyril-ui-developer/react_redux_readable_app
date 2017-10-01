@@ -3,7 +3,7 @@ import { Card } from 'semantic-ui-react';
 import PostCard from './post-card';
 
 export default function PostList({posts}){
-console.log(posts)
+
   const cards = () => {
     return posts.map(post => {
       return (

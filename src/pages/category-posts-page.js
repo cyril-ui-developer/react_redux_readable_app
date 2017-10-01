@@ -5,6 +5,7 @@ import PostList from '../components/posts-list';
 import { fetchCategories, fetchPosts , fetchCategoryPosts} from '../actions/action';
 import  CategoryPostList  from '../components/category-posts-list';
 import { NavLink, Route } from 'react-router-dom';
+import  SortOrders  from '../components/sort-orders';
 
 class CategoryPostPage extends Component {
 
@@ -18,12 +19,14 @@ class CategoryPostPage extends Component {
 
 
   render() {
-   
+   let sortedData = this.props.categoryPosts;
+
     return (
       <div>
        <NavLink className='close-create-contact' to='/'>Back</NavLink>
         <h1>List of {this.pageTitle} Category Posts</h1>
-        <CategoryPostList catPosts={this.props.categoryPosts}/>
+        <SortOrders unSortData={this.props.categoryPosts} onSortData={(sortedData) => {this.forceUpdate()}}/>
+        <CategoryPostList catPosts={sortedData}/>
       </div>
     )
   }

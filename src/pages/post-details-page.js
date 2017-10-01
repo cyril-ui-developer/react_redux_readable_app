@@ -14,7 +14,7 @@ import PostCard from '../components/post-card';
 import { Link } from 'react-router-dom';
 import { Card, Button, Icon } from 'semantic-ui-react';
 import sortBy from 'sort-by';
-
+import  SortOrders  from '../components/sort-orders';
 
 class PostDetailsPage extends Component {
 
@@ -99,6 +99,7 @@ class PostDetailsPage extends Component {
   render() {
   let singleComment;
   let sortedComments = this.props.comments;
+   let sortedData = this.props.comments;
    console.log(this.props.comments)
     return (
       <div>
@@ -109,11 +110,7 @@ class PostDetailsPage extends Component {
          <br />   <br />   <br />
          <Link to={`/newcomment`}>  Add New Comment </Link>
          <hr />
-        <button onClick={this.voteAscOrder}>Vote(ASC)</button>
-       <button onClick={this.voteDescOrder}>Vote(DESC)</button>
-       <span> | </span>
-       <button onClick={this.timestampAscOrder}>Timestamp(ASC)</button>
-       <button onClick={this.timestampDescOrder}>Timestamp(DESC)</button>
+       <SortOrders unSortData={this.props.comments} onSortData={(sortedData) => {this.forceUpdate()}}/>
          <CommentDetails parentId={this.props.post} commentDetails={ sortedComments }  onBookShelf={(comment) => {
              }} />      
           {this.state.redirect ?
