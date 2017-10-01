@@ -13,6 +13,7 @@ import { Redirect } from 'react-router';
 import PostCard from '../components/post-card';
 import { Link } from 'react-router-dom';
 import { Card, Button, Icon } from 'semantic-ui-react';
+import sortBy from 'sort-by';
 
 
 class PostDetailsPage extends Component {
@@ -73,9 +74,31 @@ class PostDetailsPage extends Component {
   }
 
 
+ voteDescOrder = () => {
+  let sortedComments  =  this.props.comments.sort(sortBy('-voteScore'))
+    this.forceUpdate()
+   return sortedComments;
+  }
+ voteAscOrder= () => {
+     let sortedComments  = this.props.comments.sort(sortBy('voteScore'))
+      this.forceUpdate()
+    return sortedComments ;
+  }
+
+ timestampDescOrder = () => {
+   let sortedComments   = this.props.comments.sort(sortBy('-timestamp'))
+    this.forceUpdate()
+   return sortedComments ;
+  }
+ timestampAscOrder= () => {
+     let sortedComments = this.props.comments.sort(sortBy('timestamp'))
+      this.forceUpdate()
+    return sortedComments ;
+  }
 
   render() {
   let singleComment;
+  let sortedComments = this.props.comments;
    console.log(this.props.comments)
     return (
       <div>
@@ -85,7 +108,13 @@ class PostDetailsPage extends Component {
          {/* <CommentForm parentId={this.props.post} onSubmit={this.submit} comment={this.props.comment}/> */}
          <br />   <br />   <br />
          <Link to={`/newcomment`}>  Add New Comment </Link>
-         <CommentDetails parentId={this.props.post} commentDetails={this.props.comments}  onBookShelf={(comment) => {
+         <hr />
+        <button onClick={this.voteAscOrder}>Vote(ASC)</button>
+       <button onClick={this.voteDescOrder}>Vote(DESC)</button>
+       <span> | </span>
+       <button onClick={this.timestampAscOrder}>Timestamp(ASC)</button>
+       <button onClick={this.timestampDescOrder}>Timestamp(DESC)</button>
+         <CommentDetails parentId={this.props.post} commentDetails={ sortedComments }  onBookShelf={(comment) => {
              }} />      
           {this.state.redirect ?
           <Redirect to="/" /> :null}

@@ -10,28 +10,47 @@ class RootPage extends Component {
   componentDidMount() {
     this.props.fetchCategories();
     this.props.fetchPosts();
+    let sortedPosts = this.props.posts.sort(sortBy('-voteScore'))
+ 
   }
 
- desc = () => {
-   let postsData = this.props.posts.sort(sortBy('-voteScore'))
-   return postsData;
-   console.log('this.props.posts')
+ voteDescOrder = () => {
+  let sortedPosts =  this.props.posts.sort(sortBy('-voteScore'))
+    this.forceUpdate()
+   return sortedPosts;
   }
-   asc = () => {
-    let postsData = this.props.posts.sort(sortBy('voteScore'))
-    console.log(postsData )
-    return postsData;
+ voteAscOrder= () => {
+     let sortedPosts = this.props.posts.sort(sortBy('voteScore'))
+      this.forceUpdate()
+    return sortedPosts;
   }
-  render() {
-     let postsData = this.props.posts.sort(sortBy('-voteScore'))
-     
+
+ timestampDescOrder = () => {
+   let sortedPosts  =this.props.posts.sort(sortBy('-timestamp'))
+    this.forceUpdate()
+   return sortedPosts;
+  }
+ timestampAscOrder= () => {
+     let sortedPosts = this.props.posts.sort(sortBy('timestamp'))
+      this.forceUpdate()
+    return sortedPosts;
+  }
+render() {
+  //set default sort not working
+  // let sortedPosts = this.props.posts.sort(sortBy('-voteScore'))
+let sortedPosts = this.props.posts;
+   
     return (
       <div>
         <h1>List of Categories</h1>
         <CategoriesList categories={this.props.categories}/>
           <h1>List of Posts</h1>
-      <button onClick={this.asc}>ASC </button>
-        <PostList posts={postsData} />
+       <button onClick={this.voteAscOrder}>Vote(ASC)</button>
+       <button onClick={this.voteDescOrder}>Vote(DESC)</button>
+       <span> | </span>
+       <button onClick={this.timestampAscOrder}>Timestamp(ASC)</button>
+       <button onClick={this.timestampDescOrder}>Timestamp(DESC)</button>
+        <PostList posts={sortedPosts} />
       </div>
     )
   }
