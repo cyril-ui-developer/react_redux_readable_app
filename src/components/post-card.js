@@ -12,7 +12,7 @@ export default function PostCard({post, deletePost}) {
         <Card.Description>
           <p>{post.body}</p>
           <p>{post.voteScore}</p>
-          <p>{post.timestamp}</p>
+          <p>{(new Date(post.timestamp)).toString()}</p>
         </Card.Description>
       </Card.Content>
       {/* <Card.Content extra>

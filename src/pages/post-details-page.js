@@ -51,8 +51,20 @@ class PostDetailsPage extends Component {
        })
   }
 }
-  componentDidMount() {
-    
+
+  submitVote = (comment) => {
+  if(!comment.id) {
+   
+    // let uniqueId =  _.uniqueId('readable_app_');;
+    comment.parentId= this.props.post.id
+    return this.props.votePost(comment)
+      .then(response => this.setState({ redirect:true }))
+      .catch(err => {
+         throw new SubmissionError(this.props.errors)
+       })
+  }
+}
+  componentDidMount() {   
   const { id} = this.props.match.params;
   let pageTitle = id;
    console.log(pageTitle)

@@ -116,6 +116,16 @@ export default (state=defaultState, action={}) => {
       post: state.posts.filter(item => item.id !== id)
     }
   }
+
+    case 'VOTE_POST_FULFILLED': {
+      const post = action.payload.data;
+      return {
+        ...state,
+        posts: state.posts.map(item => item.id === post.id ? post: item),
+        errors: {},
+        loading: false
+      }
+    }
         default:
           return state;
       }

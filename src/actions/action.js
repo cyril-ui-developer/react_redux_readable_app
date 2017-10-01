@@ -121,3 +121,12 @@ export function deletePost(id) {
     })
   }
 }
+
+  export function votePost(post) {
+  return dispatch => {
+    return dispatch({
+      type: 'VOTE_POST',
+      payload: client.post(`${urlPosts}/${post.id}`, post)
+    })
+  }
+}

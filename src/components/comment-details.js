@@ -27,7 +27,7 @@ class CommentDetails extends Component {
             <div>  
                <p>Content:{comment.body}</p>
                <p>Vote:{comment.voteScore}</p>
-               <p>Date/Time: {comment.timestamp}</p>
+               <p>Date/Time: {(new Date(comment.timestamp)).toString()}</p>
                <p> Author: {comment.author}</p>
               <Card>
               <Card.Content extra>

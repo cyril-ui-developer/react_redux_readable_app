@@ -7,18 +7,21 @@ import { Card, Button, Icon } from 'semantic-ui-react';
 export default function PostDetails({postDetails, commentDetails, deletePost}){
 
   const cards = () => {
+   
       return (
+        
       <div>
+        
         <h3>
           Title: {postDetails.title}
           </h3>
           <p>Content: {postDetails.body} </p>
           <p>Category: {postDetails.category} </p>
           <p>Author: {postDetails.author} </p>
-          <p>Date / Time:{postDetails.timestamp}</p>
+          <p>Date / Time:{(new Date(postDetails.timestamp)).toString()}</p>
           <Card>
             <Card.Content extra>
-            <button onClick={()=>{postDetails.voteScore= postDetails.voteScore + 1} }>+</button>
+            <button onClick={()=>{ console.log("upVote")}}>+t</button>
             <span> {postDetails.voteScore} </span>
             <button onClick={()=>{postDetails.voteScore= postDetails.voteScore - 1} }>-</button>
             <Icon name='outline'/>Comment({commentDetails.length})
