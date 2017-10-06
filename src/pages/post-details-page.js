@@ -74,27 +74,7 @@ class PostDetailsPage extends Component {
   }
 
 
- voteDescOrder = () => {
-  let sortedComments  =  this.props.comments.sort(sortBy('-voteScore'))
-    this.forceUpdate()
-   return sortedComments;
-  }
- voteAscOrder= () => {
-     let sortedComments  = this.props.comments.sort(sortBy('voteScore'))
-      this.forceUpdate()
-    return sortedComments ;
-  }
-
- timestampDescOrder = () => {
-   let sortedComments   = this.props.comments.sort(sortBy('-timestamp'))
-    this.forceUpdate()
-   return sortedComments ;
-  }
- timestampAscOrder= () => {
-     let sortedComments = this.props.comments.sort(sortBy('timestamp'))
-      this.forceUpdate()
-    return sortedComments ;
-  }
+ 
 
   render() {
   let singleComment;
@@ -111,7 +91,7 @@ class PostDetailsPage extends Component {
          <Link to={`/newcomment`}>  Add New Comment </Link>
          <hr />
        <SortOrders unSortData={this.props.comments} onSortData={(sortedData) => {this.forceUpdate()}}/>
-         <CommentDetails parentId={this.props.post} commentDetails={ sortedComments }  onBookShelf={(comment) => {
+         <CommentDetails parentId={this.props.post} commentDetails={ sortedComments }  onComment={(comment) => {
              }} />      
           {this.state.redirect ?
           <Redirect to="/" /> :null}

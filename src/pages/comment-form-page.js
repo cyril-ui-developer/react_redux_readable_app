@@ -22,7 +22,6 @@ class CommentFormPage extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.match.params)
     const { id } = this.props.match.params;
     if(id){
     this.props.fetchComment(id)
@@ -59,17 +58,15 @@ submit = (comment) => {
       <div>
         {
           this.state.redirect ?
-          <Redirect to={`/posts/details/${post.id}`} /> :
-          <CommentForm  post={this.props.post} comment={this.props.comment} onSubmit={this.submit} />
+          <Redirect to={`/post/details/${post.id}`} /> :
+          <CommentForm  post={ this.props.post } comment={ this.props.comment } onSubmit={ this.submit } />
         }
       </div>
     )
   }
-
 }
 
 function mapStateToProps(state) {
-  console.log(state)
   return {
       post: state.readableStore.post,
       comment: state.readableStore.comment,

@@ -21,9 +21,9 @@ class App extends Component {
         </div>
         <Route exact path="/" component={RootPage}/>
         <Route path="/posts/new" component={PostFormPage}/>
-        <Route path="/posts/edit/:id" component={PostFormPage}/>
+        <Route path="/post/edit/:id" component={PostFormPage}/>
         <Route path="/:name/posts" component={CategoryPostPage}/>
-        <Route path="/posts/details/:id" component={PostDetailsPage}/>
+        <Route path="/post/details/:id" component={PostDetailsPage}/>
         <Route path="/newcomment" component={CommentFormPage}/> 
         <Route path="/comments/:id" component={CommentFormPage}/> 
         

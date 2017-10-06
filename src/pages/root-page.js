@@ -15,23 +15,6 @@ class RootPage extends Component {
  
   }
 
- voteDescOrder = () => {
-  let sortedPosts =  this.props.posts.sort(sortBy('-voteScore'))
-   return sortedPosts;
-  }
- voteAscOrder= () => {
-     let sortedPosts = this.props.posts.sort(sortBy('voteScore'))
-    return sortedPosts;
-  }
-
- timestampDescOrder = () => {
-   let sortedPosts  =this.props.posts.sort(sortBy('-timestamp'))
-   return sortedPosts;
-  }
- timestampAscOrder= () => {
-     let sortedPosts = this.props.posts.sort(sortBy('timestamp'))
-    return sortedPosts;
-  }
 render() {
   //set default sort not working
   // let sortedPosts = this.props.posts.sort(sortBy('-voteScore'))

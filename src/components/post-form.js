@@ -12,7 +12,9 @@ componentWillReceiveProps = (nextProps) => {
   const { post } = nextProps;
   if(post.id !== this.props.post.id) { 
     this.props.initialize(post)
+    
   }
+  
 }
 
 
@@ -37,49 +39,21 @@ componentWillReceiveProps = (nextProps) => {
   )
 
   render() {
-   // const  { DOM: { input, select, textarea } } = React
     const { handleSubmit, pristine, submitting, post} = this.props;
     this.props.handleSubmit.timestamp= Date.now();
-   // console.log(form)
+
     return (
       <Grid centered columns={2}>
         <Grid.Column>
-         {post.id ?   <NavLink className='close-create-contact' to={`/posts/details/${post.id}`}>Back</NavLink>  : ''}
-        
+         {post.id ?   <NavLink className='close-create-contact' to={`/post/details/${post.id}`}>Back</NavLink>  : ''}
            <h1 style={{marginTop:"1em"}}>{post.id ? 'Edit Post' : 'Add New Post'}</h1>
-          <Form onSubmit={handleSubmit}>
-             {/* <div>
-              <select >
-                  <option value="">Select a categories...</option>
-                    {this.props.categories.map(val =>
-                      <option name="category"  value={val.name} key={val.name}  >
-                        {val.name}
-                   </option>
-                    )}
-                  </select>
-                  {}
-                </div> 
-               <div>
-                <label>Select Category</label>
-                <div>
-                  <Field name="category" component={this.renderSelectField}>
-                    <option></option>
-                    <option value="react">React</option>
-                    <option value="redux">Redux</option>
-                    <option value="udacity">Udacity</option>
-                  </Field>
-                </div>
-              </div>  */}
-              {/* <Field name="id" type="text"  component={this.renderField} label="id"/> */}
-             <Field name="category" type="text"  component={this.renderField} label="Category"/> 
+           {post.body}
+          <Form onSubmit={handleSubmit}> 
+            <Field name="category" type="text"  component={this.renderField} label="Category"/> 
             <Field name="title" type="text" component={this.renderField} label="Title"/>
-            {/* <Field name="body" type="text" component={this.renderField} label="Enter post content"/> */}
             <Field name="body" component={this.renderTextareaField}/>
-       
             <Field name="author" type="text"  component={this.renderField} label="Author"/>
-             {/* <Field name="timestamp" type="datetime"  component={this.renderField} label="timestamp"/>  */}
             <Button primary type='submit' disabled={pristine || submitting}>Save</Button>
-            
           </Form>
         </Grid.Column>
       </Grid>

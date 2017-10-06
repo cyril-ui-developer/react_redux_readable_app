@@ -117,7 +117,7 @@ export default (state=defaultState, action={}) => {
     }
   }
 
-    case 'VOTE_POST_FULFILLED': {
+    case 'UPDATE_POST_FULFILLED': {
       const post = action.payload.data;
       return {
         ...state,

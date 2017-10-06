@@ -23,7 +23,6 @@ class PostFormPage extends Component {
 
   componentDidMount() {
     this.props.fetchCategories();
-    console.log(this.props.match.params)
     const { id } = this.props.match.params;
     if(id){
     this.props.fetchPost(id)
@@ -53,10 +52,9 @@ submit = (post) => {
 }
 
   render() {
-
+   const { post} = this.props;
     return (
       <div>
-          {/* <Redirect to={`/posts/details/${this.props.post.id}`} />  */}
         {
           this.state.redirect ? <Redirect to={`/`} />
         : <PostForm categories={this.props.categories} post={this.props.post} onSubmit={this.submit} />

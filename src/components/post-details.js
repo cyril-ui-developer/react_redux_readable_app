@@ -25,7 +25,7 @@ export default function PostDetails({postDetails, commentDetails, deletePost}){
             <span> {postDetails.voteScore} </span>
             <button onClick={()=>{postDetails.voteScore= postDetails.voteScore - 1} }>-</button>
             <Icon name='outline'/>Comment({commentDetails.length})
-            <Link to={`/posts/edit/${postDetails.id}`}> <Icon name='edit outline'/> </Link>
+            <Link to={`/post/edit/${postDetails.id}`} > <Icon name='edit outline'/> </Link>
             <Link to={`/`} ><Icon name='delete outline' onClick={() => deletePost(postDetails.id)} /> </Link>
             </Card.Content>
           </Card>

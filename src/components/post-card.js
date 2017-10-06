@@ -7,7 +7,7 @@ export default function PostCard({post, deletePost}) {
     <Card>
       <Card.Content>
         <Card.Header>
-           <Link to={`/posts/details/${post.id}`}  className="ui basic button green">  {post.title}</Link>
+           <Link to={`/post/details/${post.id}`}  className="ui basic button green">  {post.title}</Link>
         </Card.Header>
         <Card.Description>
           <p>{post.body}</p>
@@ -15,11 +15,11 @@ export default function PostCard({post, deletePost}) {
           <p>{(new Date(post.timestamp)).toString()}</p>
         </Card.Description>
       </Card.Content>
-      {/* <Card.Content extra>
-          <Link to={``} ><Icon name='comment outline'/>Comment(10)</Link> 
-          <Link to={`/posts/edit/${post.id}`}> <Icon name='edit outline'/> </Link>
+       <Card.Content extra>
+          {/* <Link to={``} ><Icon name='comment outline'/>Comment(10)</Link> 
+          <Link to={`/post/edit/${post.id}`}> <Icon name='edit outline'/> </Link> */}
           <Link to={``} ><Icon name='delete outline'/> </Link>
-      </Card.Content> */}
+      </Card.Content> 
     </Card>
   )
 }

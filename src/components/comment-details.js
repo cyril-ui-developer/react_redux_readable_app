@@ -11,8 +11,8 @@ class CommentDetails extends Component {
   handleSelectChange = (comment, e) => {
     e.preventDefault()
     
-   if (this.props.onBookShelf){
-       this.props.onBookShelf(comment);
+   if (this.props.onComment){
+       this.props.onComment(comment);
     }
 }
  render() {
@@ -42,10 +42,8 @@ class CommentDetails extends Component {
             </div>
 
            )
-           } )
-    
-    }
-    
+           } )  
+         }
          </div>
       )
   }
