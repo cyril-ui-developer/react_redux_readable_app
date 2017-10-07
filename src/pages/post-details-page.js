@@ -64,9 +64,6 @@ class PostDetailsPage extends Component {
     this.props.fetchComments(id)
   }
 
-
- 
-
   render() {
   let singleComment;
   let sortedComments = this.props.comments;

@@ -48,17 +48,25 @@ class SortOrders extends Component {
     return sortedData;
   }
 
-  handleSelectChange = (comment, e) => {
-    e.preventDefault()
-    
-   if (this.props.onBookShelf){
-       this.props.onBookShelf(comment);
+  componentDidMount(){
+   let sortedData =  this.props.unSortData.sort(sortBy('-voteScore'))
+   if (this.props.onSortData){
+       this.props.onSortData(sortedData);
     }
-}
+    this.forceUpdate()
+  }
+//   handleSelectChange = (comment, e) => {
+//     e.preventDefault()
+    
+//    if (this.props.onBookShelf){
+//        this.props.onBookShelf(comment);
+//     }
+// }
+
  render() {
    let sortedData = this.props.unSortData;
-console.log(sortedData)
-  const cards = () => {
+   console.log(sortedData)
+    const cards = () => {
 
       return (
         <div>
