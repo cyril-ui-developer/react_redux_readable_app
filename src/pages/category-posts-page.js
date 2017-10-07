@@ -2,10 +2,12 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import CategoriesList from '../components/categories-list';
 import PostList from '../components/posts-list';
-import { fetchCategories, fetchPosts , fetchCategoryPosts} from '../actions/action';
+import { fetchCategories, fetchPosts , fetchCategoryPosts, votePost} from '../actions/action';
 import  CategoryPostList  from '../components/category-posts-list';
 import { NavLink, Route } from 'react-router-dom';
 import  SortOrders  from '../components/sort-orders';
+import { SubmissionError } from 'redux-form';
+import { Redirect } from 'react-router';
 
 class CategoryPostPage extends Component {
 
@@ -16,7 +18,17 @@ class CategoryPostPage extends Component {
     this.props.fetchCategoryPosts(name);
   }
 
-
+  submitVotePost = (postId, vote) => {
+  if(postId) {
+    console.log(postId)
+    console.log(vote)
+    return this.props.votePost(postId, vote)
+      .then(response => this.setState({ redirect:true}))
+      .catch(err => {
+         throw new SubmissionError(this.props.errors)
+       })
+   }
+ }
   render() {
    let sortedData = this.props.categoryPosts;
 
@@ -25,7 +37,7 @@ class CategoryPostPage extends Component {
        <NavLink className='close-create-contact' to='/'>Back</NavLink>
         <h1>List of {this.pageTitle} Category Posts</h1>
         <SortOrders unSortData={this.props.categoryPosts} onSortData={(sortedData) => {this.forceUpdate()}}/>
-        <CategoryPostList catPosts={sortedData}/>
+        <CategoryPostList catPosts={sortedData} votePost={this.submitVotePost}/>
       </div>
     )
   }
@@ -37,4 +49,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {fetchCategoryPosts})(CategoryPostPage);
+export default connect(mapStateToProps, {fetchCategoryPosts, votePost})(CategoryPostPage);
