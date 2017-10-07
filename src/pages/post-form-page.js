@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { newPost, savePost, updatePost, fetchPost, fetchCategories } from '../actions/action';
 import { SubmissionError } from 'redux-form';
 import { Redirect } from 'react-router';
-// import _  from 'lodash';
 
 class PostFormPage extends Component {
 
@@ -38,7 +37,7 @@ submit = (post) => {
     post.id = this.uniqueId();
     post.timestamp = datetime;
     return this.props.savePost(post)
-      .then(response => this.setState({ redirect:false }))
+      .then(response => this.setState({ redirect:true}))
       .catch(err => {
          throw new SubmissionError(this.props.errors)
        })
@@ -58,12 +57,10 @@ submit = (post) => {
         {
           this.state.redirect ? <Redirect to={`/`} />
         : <PostForm categories={this.props.categories} post={this.props.post} onSubmit={this.submit} />
-        }
-        
+        }       
       </div>
     )
   }
-
 }
 
 function mapStateToProps(state) {

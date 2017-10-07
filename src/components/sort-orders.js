@@ -1,13 +1,11 @@
 import React from 'react';
 import { Card, Button, Icon } from 'semantic-ui-react';
-//import PostCard from './post-card';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import { Component} from 'react';
 import sortBy from 'sort-by';
 
 class SortOrders extends Component {
-  //export default function CommentDetails({commentDetails}){
  voteDescOrder = (e) => {
   let sortedData =  this.props.unSortData.sort(sortBy('-voteScore'))
     e.preventDefault()

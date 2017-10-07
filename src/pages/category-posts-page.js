@@ -10,7 +10,6 @@ import  SortOrders  from '../components/sort-orders';
 class CategoryPostPage extends Component {
 
   componentDidMount() {
-    
   const { name } = this.props.match.params;
   let pageTitle = name;
    console.log(pageTitle)

@@ -10,11 +10,8 @@ export default function PostDetails({postDetails, commentDetails, deletePost,vot
    
       return (
         
-      <div>
-        
-        <h3>
-          Title: {postDetails.title}
-          </h3>
+      <div>  
+          <h3>Title: {postDetails.title} </h3>
           <p>Content: {postDetails.body} </p>
           <p>Category: {postDetails.category} </p>
           <p>Author: {postDetails.author} </p>

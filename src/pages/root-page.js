@@ -16,8 +16,6 @@ class RootPage extends Component {
   }
 
 render() {
-  //set default sort not working
-  // let sortedPosts = this.props.posts.sort(sortBy('-voteScore'))
  let sortedData = this.props.posts;
     return (
       <div>
@@ -31,7 +29,6 @@ render() {
   }
 }
 
-// Make contacts  array available in  props
 function mapStateToProps(state) {
   console.log(state)
   return {

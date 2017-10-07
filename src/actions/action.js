@@ -1,16 +1,14 @@
 import { client } from './';
 
-const url = '/categories';
-const urlPosts = '/posts';
-const urlCatPosts = '/posts';
-const urlPostDetails = '/posts';
-const urlComments = '/posts';
+const url_categories = '/categories';
+const url_posts = '/posts';
+const url_comments = '/comments';
 
 export function fetchCategories(){
   return dispatch => {
     dispatch({
       type: 'FETCH_CATEGORIES',
-      payload: client.get(url)
+      payload: client.get(url_categories)
     })
   }
 }
@@ -19,7 +17,7 @@ export function fetchPosts(){
   return dispatch => {
     dispatch({
       type: 'FETCH_POSTS',
-      payload: client.get(urlPosts)
+      payload: client.get(url_posts)
     })
   }
 }
@@ -36,7 +34,7 @@ export function savePost(post) {
   return dispatch => {
     return dispatch({
       type: 'SAVE_POST',
-      payload: client.post(urlPosts, post)
+      payload: client.post(url_posts, post)
     })
   }
 }
@@ -45,7 +43,7 @@ export function fetchPost(id) {
   return dispatch => {
     return dispatch({
       type: 'FETCH_POST',
-      payload: client.get(`${urlPosts}/${id}`)
+      payload: client.get(`${url_posts}/${id}`)
     })
   }
 }
@@ -54,7 +52,7 @@ export function updatePost(post) {
   return dispatch => {
     return dispatch({
       type: 'UPDATE_POST',
-      payload: client.put(`${urlPosts}/${post.id}`, post)
+      payload: client.put(`${url_posts}/${post.id}`, post)
     })
   }
 }
@@ -63,7 +61,7 @@ export function fetchCategoryPosts(cat) {
   return dispatch => {
     return dispatch({
       type: 'FETCH_CATEGORYPOSTS',
-      payload: client.get(`${cat}${urlCatPosts}`)
+      payload: client.get(`${cat}${url_posts}`)
     })
   }
 }
@@ -72,7 +70,7 @@ export function fetchComments(id){
   return dispatch => {
     dispatch({
       type: 'FETCH_COMMENTS',
-      payload: client.get(`${urlPosts}/${id}/comments`)
+      payload: client.get(`${url_posts}/${id}/comments`)
     })
   }
 }
@@ -89,7 +87,7 @@ export function saveComment(comment) {
   return dispatch => {
     return dispatch({
       type: 'SAVE_COMMENT',
-      payload: client.post(`/comments`, comment)
+      payload: client.post(`${url_comments}`, comment)
     })
   }
 }
@@ -98,7 +96,7 @@ export function fetchComment(id) {
   return dispatch => {
     return dispatch({
       type: 'FETCH_COMMENT',
-      payload: client.get(`/comments/${id}`)
+      payload: client.get(`${url_comments}/${id}`)
     })
   }
 }
@@ -107,7 +105,7 @@ export function updateComment(comment) {
   return dispatch => {
     return dispatch({
       type: 'UPDATE_COMMENT',
-      payload: client.put(`/comments/${comment.id}`, comment)
+      payload: client.put(`${url_comments}/${comment.id}`, comment)
     })
   }
 }
@@ -117,7 +115,7 @@ export function deletePost(id) {
   return dispatch => {
     return dispatch({
       type: 'DELETE_POST',
-      payload: client.delete(`/posts/${id}`, obj)
+      payload: client.delete(`${url_posts}/${id}`, obj)
     })
   }
 }
@@ -127,7 +125,7 @@ export function deleteComment(id) {
   return dispatch => {
     return dispatch({
       type: 'DELETE_COMMENT',
-      payload: client.delete(`/comments/${id}`, obj)
+      payload: client.delete(`${url_comments}/${id}`, obj)
     })
   }
 }
@@ -137,7 +135,7 @@ export function deleteComment(id) {
   return dispatch => {
     return dispatch({
       type: 'VOTE_POST',
-      payload: client.post(`${urlPosts}/${postId}`, reqObj)
+      payload: client.post(`${url_posts}/${postId}`, reqObj)
     })
   }
 }
@@ -146,7 +144,7 @@ export function deleteComment(id) {
   return dispatch => {
     return dispatch({
       type: 'VOTE_COMMENT',
-      payload: client.post(`/comments/${commentId}`, reqObj)
+      payload: client.post(`${url_comments}/${commentId}`, reqObj)
     })
   }
  }

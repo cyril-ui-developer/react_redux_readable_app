@@ -15,11 +15,6 @@ export default function PostCard({post, deletePost}) {
           <p>{(new Date(post.timestamp)).toString()}</p>
         </Card.Description>
       </Card.Content>
-       <Card.Content extra>
-          {/* <Link to={``} ><Icon name='comment outline'/>Comment(10)</Link> 
-          <Link to={`/post/edit/${post.id}`}> <Icon name='edit outline'/> </Link> 
-          <Link to={``} ><Icon name='delete outline'/> </Link>*/}
-      </Card.Content> 
     </Card>
   )
 }

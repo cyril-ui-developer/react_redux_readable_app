@@ -54,7 +54,7 @@ export default (state=defaultState, action={}) => {
       const post = action.payload.data;
       return {
         ...state,
-        posts: state.posts.map(item => item.id === post.id ? post: item),
+        posts: state.posts.map(p => p.id === post.id ? post: p),
         errors: {},
         loading: false
       }
@@ -103,7 +103,7 @@ export default (state=defaultState, action={}) => {
       const comment = action.payload.data;
       return {
         ...state,
-        comments: state.comments.map(item => item.id === comment.id ? comment: item),
+        comments: state.comments.map(c=> c.id === c.id ? comment: c),
         errors: {},
         loading: false
       }
@@ -113,21 +113,21 @@ export default (state=defaultState, action={}) => {
     const id = action.payload.data.id;
     return {
       ...state,
-      posts: state.posts.filter(item => item.id !== id)
+      posts: state.posts.filter(p => p.id !== id)
     }
   }
   case 'DELETE_COMMENT_FULFILLED': {
     const id = action.payload.data.id;
     return {
       ...state,
-      comments: state.comments.filter(item => item.id !== id)
+      comments: state.comments.filter(c => c.id !== id)
     }
   }
     case 'UPDATE_POST_FULFILLED': {
       const post = action.payload.data;
       return {
         ...state,
-        posts: state.posts.map(item => item.id === post.id ? post: item),
+        posts: state.posts.map(p => p.id === post.id ? post: p),
         errors: {},
         loading: false
       }

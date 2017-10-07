@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { newComment, saveComment, fetchPost, updateComment, fetchComment } from '../actions/action';
 import { SubmissionError } from 'redux-form';
 import { Redirect } from 'react-router';
-// import _  from 'lodash';
 
 class CommentFormPage extends Component {
 

@@ -31,27 +31,7 @@ class PostDetailsPage extends Component {
       randomNumber() + '-' + randomNumber() + randomNumber() + randomNumber();
   }
 
-//   submit = (comment) => {
-//   if(!comment.id) {
-//     let datetime = Date.now();
-//     comment.id = this.uniqueId();
-//     comment.parentId= this.props.post.id
-//     comment.timestamp = datetime;
-//     return this.props.saveComment(comment)
-//       .then(response => this.setState({ redirect:true }))
-//       .catch(err => {
-//          throw new SubmissionError(this.props.errors)
-//        })
-//   } else {
-//     return this.props.updateComment(comment)
-//       .then(response => this.setState({ redirect:true }))
-//       .catch(err => {
-//          throw new SubmissionError(this.props.errors)
-//        })
-//   }
-// }
-
-  submitVote = (postId, vote) => {
+  submitVotePost = (postId, vote) => {
   if(postId) {
     console.log(postId)
     console.log(vote)
@@ -60,8 +40,8 @@ class PostDetailsPage extends Component {
       .catch(err => {
          throw new SubmissionError(this.props.errors)
        })
-  }
-}
+   }
+ }
 
 
   submitVoteComment = (postId, vote) => {
@@ -97,8 +77,7 @@ class PostDetailsPage extends Component {
         <NavLink className='close-create-contact' to='/'>Back</NavLink>
          <h1>Post Detail</h1>
          <PostDetails key={this.props.post.id} postDetails={this.props.post} commentDetails={this.props.comments}  deletePost={this.props.deletePost}
-         deletePost={this.props.deletePost} votePost={this.submitVote}/>        
-         {/* <CommentForm parentId={this.props.post} onSubmit={this.submit} comment={this.props.comment}/> */}
+         deletePost={this.props.deletePost} votePost={this.submitVotePost}/>        
          <br />   <br />   <br />
          <Link to={`/newcomment`}>  Add New Comment </Link>
          <hr />

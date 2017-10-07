@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, Button, Icon } from 'semantic-ui-react';
-//import PostCard from './post-card';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import { Component} from 'react';
@@ -33,7 +32,6 @@ class CommentDetails extends Component {
               <button onClick={()=>{ this.props.voteComment(comment.id, "upVote")}}>+</button>
               <span> {comment.voteScore} </span>
               <button onClick={()=>{ this.props.voteComment(comment.id, "downVote") }}>-</button>
-              {/* <Link to={`/comments/${comment.id}`} onChange={this.handleSelectChange.bind(this, comment)}> <Icon name='edit outline'/> </Link> */}
               <Link to={`/comments/${comment.id}`} onClick={(comment) => this.handleSelectChange}> <Icon name='edit outline'/> </Link>
               <Link to={`/post/details/${this.props.parentId.id}`} onClick={() => this.props.deleteComment(comment.id)}><Icon name='delete outline'/> </Link>
             </Card.Content>

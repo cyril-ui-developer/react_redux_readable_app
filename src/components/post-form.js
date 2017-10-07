@@ -47,10 +47,10 @@ renderField = ({ input, label, type, meta: { touched, error } }) => (
            <h1 style={{marginTop:"1em"}}>{post.id ? 'Edit Post' : 'Add New Post'}</h1>
            {post.category}
           <Form onSubmit={handleSubmit}> 
-            <Field name="category" type="text"  component={this.renderField} label="Category"/> 
-            <Field name="title" type="text" component={this.renderField} label="Title"/>
-            <Field name="body" component={this.renderTextareaField}/>
-            <Field name="author" type="text"  component={this.renderField} label="Author"/>
+            <Field name="category" type="text"  component={this.renderField} label="Enter Category i.e. react, udacity or redux"/> 
+            <Field name="title" type="text" component={this.renderField} label=" Enter Title"/>
+            <Field name="body" component={this.renderTextareaField} label="Enter Post"/>
+            <Field name="author" type="text"  component={this.renderField} label="Enter Author"/>
             <Button primary type='submit' disabled={pristine || submitting}>Save</Button>
           </Form>
         </Grid.Column>
