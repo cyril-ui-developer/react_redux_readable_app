@@ -12,12 +12,14 @@ import { Component} from 'react';
     sortedData = this.props.posts.sort(sortBy('-voteScore'))
   }
   
+
+
  render() {
      
   const cards = () => {
     return this.props.posts.map(post => {
       return (
-        <PostCard key={post.title} post={post}/>
+        <PostCard key={post.title} post={post} votePost={this.props.votePost}/>
       )
     })
   }

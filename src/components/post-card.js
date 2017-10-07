@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Button, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-export default function PostCard({post, deletePost}) {
+export default function PostCard({post, deletePost, votePost}) {
   return (
     <Card>
       <Card.Content>
@@ -11,8 +11,11 @@ export default function PostCard({post, deletePost}) {
         </Card.Header>
         <Card.Description>
           <p>{post.body}</p>
-          <p>{post.voteScore}</p>
           <p>{(new Date(post.timestamp)).toString()}</p>
+           <button onClick={()=>{ votePost(post.id, "upVote")}}>+</button>
+            <span> {post.voteScore} </span>
+            <button onClick={()=>{ votePost(post.id, "downVote") }}>-</button>
+            {/* Comment({commentDetails.length}) */}
         </Card.Description>
       </Card.Content>
     </Card>

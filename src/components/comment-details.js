@@ -23,7 +23,6 @@ class CommentDetails extends Component {
           return (
             <div>  
                <p>Content:{comment.body}</p>
-               <p>Vote:{comment.voteScore}</p>
                <p>Date/Time: {(new Date(comment.timestamp)).toString()}</p>
                <p> Author: {comment.author}</p>
               <Card>
