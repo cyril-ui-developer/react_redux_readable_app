@@ -113,7 +113,7 @@ export function updateComment(comment) {
 }
 
 export function deletePost(id) {
-  const obj = {deleted:true}
+  const obj = {deleted:true, parentDeleted:true}
   return dispatch => {
     return dispatch({
       type: 'DELETE_POST',
@@ -132,11 +132,21 @@ export function deleteComment(id) {
   }
 }
 
-  export function votePost(post) {
+  export function votePost(postId, vote) {
+   const reqObj ={option: vote} 
   return dispatch => {
     return dispatch({
       type: 'VOTE_POST',
-      payload: client.post(`${urlPosts}/${post.id}`, post)
+      payload: client.post(`${urlPosts}/${postId}`, reqObj)
     })
   }
 }
+ export function voteComment(commentId, vote) {
+   const reqObj ={option: vote} 
+  return dispatch => {
+    return dispatch({
+      type: 'VOTE_COMMENT',
+      payload: client.post(`/comments/${commentId}`, reqObj)
+    })
+  }
+ }

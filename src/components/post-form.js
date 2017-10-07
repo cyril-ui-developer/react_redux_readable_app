@@ -12,13 +12,11 @@ componentWillReceiveProps = (nextProps) => {
   const { post } = nextProps;
   if(post.id !== this.props.post.id) { 
     this.props.initialize(post)
-    
   }
-  
 }
 
 
-  renderField = ({ input, label, type, meta: { touched, error } }) => (
+renderField = ({ input, label, type, meta: { touched, error } }) => (
     <Form.Field className={classnames({error:touched && error})}>
       <label>{label}</label>
       <input {...input} placeholder={label} type={type}/>
@@ -47,7 +45,7 @@ componentWillReceiveProps = (nextProps) => {
         <Grid.Column>
          {post.id ?   <NavLink className='close-create-contact' to={`/post/details/${post.id}`}>Back</NavLink>  : ''}
            <h1 style={{marginTop:"1em"}}>{post.id ? 'Edit Post' : 'Add New Post'}</h1>
-           {post.body}
+           {post.category}
           <Form onSubmit={handleSubmit}> 
             <Field name="category" type="text"  component={this.renderField} label="Category"/> 
             <Field name="title" type="text" component={this.renderField} label="Title"/>

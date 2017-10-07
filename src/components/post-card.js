@@ -17,8 +17,8 @@ export default function PostCard({post, deletePost}) {
       </Card.Content>
        <Card.Content extra>
           {/* <Link to={``} ><Icon name='comment outline'/>Comment(10)</Link> 
-          <Link to={`/post/edit/${post.id}`}> <Icon name='edit outline'/> </Link> */}
-          <Link to={``} ><Icon name='delete outline'/> </Link>
+          <Link to={`/post/edit/${post.id}`}> <Icon name='edit outline'/> </Link> 
+          <Link to={``} ><Icon name='delete outline'/> </Link>*/}
       </Card.Content> 
     </Card>
   )

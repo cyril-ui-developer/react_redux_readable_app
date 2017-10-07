@@ -132,6 +132,23 @@ export default (state=defaultState, action={}) => {
         loading: false
       }
     }
+
+     case 'VOTE_POST_FULFILLED': {
+      return {
+        ...state,
+        posts: [...state.posts, action.payload.data],
+        errors: {},
+        loading: false
+      }
+    }
+     case 'VOTE_COMMENT_FULFILLED': {
+      return {
+        ...state,
+        comments: [...state.comments, action.payload.data],
+        errors: {},
+        loading: false
+      }
+    }
         default:
           return state;
       }
