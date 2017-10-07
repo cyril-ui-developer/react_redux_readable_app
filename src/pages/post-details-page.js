@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import CategoriesList from '../components/categories-list';
 import PostList from '../components/posts-list';
-import { fetchPost , saveComment, updateComment, fetchComments, deletePost} from '../actions/action';
+import { fetchPost , saveComment, updateComment, fetchComments, deletePost, deleteComment} from '../actions/action';
 import  CategoryPostList  from '../components/category-posts-list';
 import  PostDetails  from '../components/post-details';
 import  CommentDetails from '../components/comment-details'
@@ -92,7 +92,7 @@ class PostDetailsPage extends Component {
          <hr />
        <SortOrders unSortData={this.props.comments} onSortData={(sortedData) => {this.forceUpdate()}}/>
          <CommentDetails parentId={this.props.post} commentDetails={ sortedComments }  onComment={(comment) => {
-             }} />      
+             }}  deleteComment={this.props.deleteComment}/>      
           {this.state.redirect ?
           <Redirect to="/" /> :null}
        </div>
@@ -109,4 +109,5 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {fetchPost, deletePost, saveComment, updateComment, fetchComments})(PostDetailsPage);
+export default connect(mapStateToProps, {fetchPost, deletePost, saveComment, updateComment, fetchComments
+, deleteComment})(PostDetailsPage);

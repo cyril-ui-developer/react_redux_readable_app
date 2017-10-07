@@ -113,10 +113,16 @@ export default (state=defaultState, action={}) => {
     const id = action.payload.data.id;
     return {
       ...state,
-      post: state.posts.filter(item => item.id !== id)
+      posts: state.posts.filter(item => item.id !== id)
     }
   }
-
+  case 'DELETE_COMMENT_FULFILLED': {
+    const id = action.payload.data.id;
+    return {
+      ...state,
+      comments: state.comments.filter(item => item.id !== id)
+    }
+  }
     case 'UPDATE_POST_FULFILLED': {
       const post = action.payload.data;
       return {

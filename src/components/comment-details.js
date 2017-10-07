@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { Component} from 'react';
 
 class CommentDetails extends Component {
-  //export default function CommentDetails({commentDetails}){
 
   handleSelectChange = (comment, e) => {
     e.preventDefault()
@@ -35,8 +34,8 @@ class CommentDetails extends Component {
               <span> {comment.voteScore} </span>
               <button onClick={()=>{comment.voteScore= comment.voteScore - 1} }>-</button>
               <Link to={`/comments/${comment.id}`} onChange={this.handleSelectChange.bind(this, comment)}> <Icon name='edit outline'/> </Link>
-              <Link to={``} ><Icon name='delete outline'/> </Link>
-              </Card.Content>
+              <Link to={`/post/details/${this.props.parentId.id}`} onClick={() => this.props.deleteComment(comment.id)}><Icon name='delete outline'/> </Link>
+            </Card.Content>
               </Card>
                <hr/>
             </div>

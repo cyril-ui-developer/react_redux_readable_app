@@ -122,6 +122,16 @@ export function deletePost(id) {
   }
 }
 
+export function deleteComment(id) {
+  const obj = {deleted:true}
+  return dispatch => {
+    return dispatch({
+      type: 'DELETE_COMMENT',
+      payload: client.delete(`/comments/${id}`, obj)
+    })
+  }
+}
+
   export function votePost(post) {
   return dispatch => {
     return dispatch({
