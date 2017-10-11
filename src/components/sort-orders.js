@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, Button, Icon } from 'semantic-ui-react';
-import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import { Component} from 'react';
 import sortBy from 'sort-by';

@@ -16,6 +16,8 @@ export default function PostCard({post, deletePost, votePost}) {
             <span> {post.voteScore} </span>
             <button onClick={()=>{ votePost(post.id, "downVote") }}>-</button>
             {/* Comment({commentDetails.length}) */}
+            <Link to={`/post/edit/${post.id}`} > <Icon name='edit outline'/> </Link>
+            <Link to={`/`} ><Icon name='delete outline' onClick={() => deletePost(post.id)}/> </Link>
         </Card.Description>
       </Card.Content>
     </Card>

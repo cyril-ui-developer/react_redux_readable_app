@@ -1,6 +1,5 @@
 import React from 'react';
 import PostCard from './post-card';
-import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import { Card, Button, Icon } from 'semantic-ui-react';
 
