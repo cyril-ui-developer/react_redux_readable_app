@@ -2,20 +2,46 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import CategoriesList from '../components/categories-list';
 import PostList from '../components/posts-list';
-import { fetchCategories, fetchPosts, votePost } from '../actions/action';
+import { fetchCategories, fetchPosts, votePost , fetchComments} from '../actions/action';
 import sortBy from 'sort-by';
 import  SortOrders  from '../components/sort-orders';
 import { SubmissionError } from 'redux-form';
 import { Redirect } from 'react-router';
 
 class RootPage extends Component {
-
+ 
   componentDidMount() {
+ 
     this.props.fetchCategories();
     this.props.fetchPosts();
     let sortedPosts = this.props.posts.sort(sortBy('-voteScore'))
- 
+  
+    // let commentsArr =[]
+    // this.props.posts.map(post => {
+    //   return (
+      this.props.fetchComments("8xf0y6ziyjabvozdd253nd")
+  
+    //   )
+    // })
+  
   }
+  componentWillReceiveProps(){
+      let commentsArr =[]
+    // this.props.posts.map(post => {
+    //   // return (
+      this.props.fetchComments("8xf0y6ziyjabvozdd253nd")
+    //   //  // console.log(post.id)
+      
+    //   //     )
+    //   //   })
+    // for (let i = 0; i < this.props.posts.length; i++) { 
+    //   this.props.fetchComments(i.id)
+    //   console.log(this.props.posts.length)
+  //}
+        console.log(commentsArr )
+    console.log(this.props.posts)
+  }
+  
   submitVotePost = (postId, vote) => {
   if(postId) {
     console.log(postId)
@@ -29,7 +55,8 @@ class RootPage extends Component {
  }
 
 render() {
- let sortedData = this.props.posts;
+ 
+  let sortedData = this.props.posts;
     return (
       <div>
         <h1>List of Categories</h1>
@@ -44,10 +71,21 @@ render() {
 
 function mapStateToProps(state) {
   console.log(state)
+  // let commentsArr =[]
+  // state.readableStore.posts.map(post => {
+  //   return (
+  //   commentsArr.push(this.props.fetchComments(post.id))
+
+  //   )
+  // })
+  // console.log(commentsArr)
+
+
   return {
       categories: state.readableStore.categories,
-      posts: state.readableStore.posts
+      posts: state.readableStore.posts,
+      comments: state.readableStore.comments     
   }
 }
 
-export default connect(mapStateToProps, {fetchCategories, fetchPosts,votePost})(RootPage);
+export default connect(mapStateToProps, {fetchCategories, fetchPosts,votePost, fetchComments})(RootPage);

@@ -6,7 +6,7 @@ import  CategoryPostList  from './category-posts-list';
 export default function CategoryCard({category}) {
   return (
     <Card>    
-      <Link to={`/${category.name}/posts`}  className="ui basic button green">{category.name}</Link>
+      <Link to={`/${category.name}`}  className="ui basic button green">{category.name}</Link>
     </Card>
   )
 }
