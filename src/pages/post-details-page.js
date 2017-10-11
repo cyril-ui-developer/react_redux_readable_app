@@ -36,7 +36,7 @@ class PostDetailsPage extends Component {
     console.log(postId)
     console.log(vote)
     return this.props.votePost(postId, vote)
-      .then(response => this.setState({ redirect:true}))
+      .then(response => this.setState({ redirect:false}))
       .catch(err => {
          throw new SubmissionError(this.props.errors)
        })
@@ -49,7 +49,7 @@ class PostDetailsPage extends Component {
     console.log(postId)
     console.log(vote)
     return this.props.voteComment(postId, vote)
-      .then(response => this.setState({ redirect:true}))
+      .then(response => this.setState({ redirect:false}))
       .catch(err => {
          throw new SubmissionError(this.props.errors)
        })
@@ -93,7 +93,7 @@ function mapStateToProps(state) {
   return {
       post: state.readableStore.post,
       comment: state.readableStore.comment,
-      comments: state.readableStore.comments
+      comments: state.readableStore.comments     
   }
 }
 
