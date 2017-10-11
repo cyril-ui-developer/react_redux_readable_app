@@ -5,29 +5,10 @@ import { Component} from 'react';
 import sortBy from 'sort-by';
 
 class SortOrders extends Component {
- voteDescOrder = (e) => {
-  let sortedData =  this.props.unSortData.sort(sortBy('-voteScore'))
-    e.preventDefault()
-    console.log(sortedData)
-   if (this.props.onSortData){
-       this.props.onSortData(sortedData);
-    }
-    this.forceUpdate()
-   return sortedData;
-  }
- voteAscOrder= (e) => {
-   let sortedData = this.props.unSortData.sort(sortBy('voteScore'))
-   e.preventDefault()
-    
-   if (this.props.onSortData){
-       this.props.onSortData(sortedData);
-    }
-      this.forceUpdate()
-    return sortedData;
-  }
 
- timestampDescOrder = (e) => {
-   let sortedData  =this.props.unSortData.sort(sortBy('-timestamp'));
+ handlSsortOrderChange = (e) => {
+   let sortedData  =this.props.unSortData.sort(sortBy(e.target.value));
+   console.log(e.target.value)
    e.preventDefault()
     
    if (this.props.onSortData){
@@ -36,31 +17,7 @@ class SortOrders extends Component {
     this.forceUpdate()
    return sortedData;
   }
- timestampAscOrder= (e) => {
-     let sortedData = this.props.unSortData.sort(sortBy('timestamp'));
-     e.preventDefault()
-    
-   if (this.props.onSortData){
-       this.props.onSortData(sortedData);
-    }
-      this.forceUpdate()
-    return sortedData;
-  }
 
-  componentDidMount(){
-   let sortedData =  this.props.unSortData.sort(sortBy('-voteScore'))
-   if (this.props.onSortData){
-       this.props.onSortData(sortedData);
-    }
-    this.forceUpdate()
-  }
-//   handleSelectChange = (comment, e) => {
-//     e.preventDefault()
-    
-//    if (this.props.onBookShelf){
-//        this.props.onBookShelf(comment);
-//     }
-// }
 
  render() {
    let sortedData = this.props.unSortData;
@@ -69,15 +26,18 @@ class SortOrders extends Component {
 
       return (
         <div>
-       <button onClick={this.voteAscOrder}>Vote(ASC)</button>
-       <button onClick={this.voteDescOrder}>Vote(DESC)</button>
-       <span> | </span>
-       <button onClick={this.timestampAscOrder}>Timestamp(ASC)</button>
-       <button onClick={this.timestampDescOrder}>Timestamp(DESC)</button>
-       
-
-    
-         </div>
+        <form>
+        <label>
+          Select Sorting Order:
+          <select onChange={this.handlSsortOrderChange}>
+            <option value="voteScore" selected>Vote - Asc)</option>
+            <option value="-voteScore">Vote - Desc</option>
+            <option value="timestamp">Timestamp - Asc</option>
+            <option value="-timestamp">Timestamp - Desc</option>
+          </select>
+          </label>
+          </form>
+       </div>
       )
   }
 

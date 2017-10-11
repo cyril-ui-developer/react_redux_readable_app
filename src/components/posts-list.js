@@ -10,6 +10,7 @@ import { Component} from 'react';
   componentDidMount(){
     let sortedData
     sortedData = this.props.posts.sort(sortBy('-voteScore'))
+    
   }
   
 
