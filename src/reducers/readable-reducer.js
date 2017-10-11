@@ -48,7 +48,15 @@ export default (state=defaultState, action={}) => {
     
       }
     }
-
+    // case 'UPDATE_POST_FULFILLED': {
+    //   const post = action.payload.data;
+    //   return {
+    //     ...state,
+    //     posts: state.posts.map(p => p.id === post.id ? post: p),
+    //     errors: {},
+    //     loading: false
+    //   }
+    // }
 
     case 'UPDATE_POST_FULFILLED': {
       const post = action.payload.data;
@@ -124,15 +132,7 @@ export default (state=defaultState, action={}) => {
       comments: state.comments.filter(c => c.id !== id)
     }
   }
-    case 'UPDATE_POST_FULFILLED': {
-      const post = action.payload.data;
-      return {
-        ...state,
-        posts: state.posts.map(p => p.id === post.id ? post: p),
-        errors: {},
-        loading: false
-      }
-    }
+  
 
      case 'VOTE_POST_FULFILLED': {
       const post = action.payload.data;
