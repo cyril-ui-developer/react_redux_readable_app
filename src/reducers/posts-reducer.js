@@ -1,6 +1,7 @@
 const defaultState = {
   posts:[],
   post: {},
+  categoryPosts:[],
   comments:[]
  
 }
@@ -8,10 +9,22 @@ const defaultState = {
 export default (state=defaultState, action={}) => {
   switch (action.type) {
 
+    case 'FETCH_CATEGORYPOSTS_FULFILLED': {
+      return {
+        ...state,
+        categoryPosts: action.payload.data
+      }
+    }
+    case "FETCH_COMMENTS_FULFILLED": {
+      return {
+        ...state,
+        comments: action.payload.data
+      }
+    }
    case "FETCH_POSTS_FULFILLED": {
       return {
         ...state,
-        posts: action.payload.data
+        posts: [...action.payload.data, state.comments]
       }
     }
     case 'NEW_POST': {

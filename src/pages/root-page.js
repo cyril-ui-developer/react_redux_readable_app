@@ -49,7 +49,8 @@ console.log(this.props.comments)
         <CategoriesList categories={this.props.categories}/>
           <h1>List of Posts</h1>
         <SortOrders unSortData={this.props.posts} onSortData={(sortedData) => {this.forceUpdate()}}/>
-        <PostList posts={sortedData} votePost={this.submitVotePost} deletePost={this.props.deletePost}/>
+        <PostList posts={sortedData} votePost={this.submitVotePost} deletePost={this.props.deletePost}
+        postCommentsCount={this.props.comments}/>
       </div>
     )
   }

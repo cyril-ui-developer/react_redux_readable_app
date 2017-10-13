@@ -20,7 +20,8 @@ import { Component} from 'react';
   const cards = () => {
     return this.props.posts.map(post => {
       return (
-        <PostCard key={post.title} post={post} votePost={this.props.votePost} deletePost={this.props.deletePost}/>
+        <PostCard key={post.title} post={post} votePost={this.props.votePost} deletePost={this.props.deletePost}
+        postCommentsCount={this.props.postCommentsCount}/>
       )
     })
   }
