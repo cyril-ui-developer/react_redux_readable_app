@@ -30,8 +30,8 @@ class CommentDetails extends Component {
               <button onClick={()=>{ this.props.voteComment(comment.id, "upVote")}}>+</button>
               <span> {comment.voteScore} </span>
               <button onClick={()=>{ this.props.voteComment(comment.id, "downVote") }}>-</button>
-              <Link to={`/comments/${comment.id}`} onClick={(comment) => this.handleSelectChange}> <Icon name='edit outline'/> </Link>
-              <Link to={`/post/details/${this.props.parentId.id}`} onClick={() => this.props.deleteComment(comment.id)}><Icon name='delete outline'/> </Link>
+              <Link to={`comments/${comment.id}`} onClick={(comment) => this.handleSelectChange}> <Icon name='edit outline'/> </Link>
+              <Link to={`${this.props.post.id}`} onClick={() => this.props.deleteComment(comment.id)}><Icon name='delete outline'/> </Link>
             </Card.Content>
               </Card>
                <hr/>

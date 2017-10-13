@@ -7,7 +7,7 @@ export default function PostCard({post, deletePost, votePost}) {
     <Card>
       <Card.Content>
         <Card.Header>
-           <Link to={`${post.category}/${post.id}`}  className="ui basic button green">  {post.title}</Link>
+           <Link to={`/${post.category}/${post.id}`}  className="ui basic button green">  {post.title}</Link>
         </Card.Header>
         <Card.Description>
           <p>{post.body}</p>

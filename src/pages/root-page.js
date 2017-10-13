@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import CategoriesList from '../components/categories-list';
 import PostList from '../components/posts-list';
-import { fetchCategories, fetchPosts, votePost , fetchComments} from '../actions/action';
+import { fetchCategories, fetchPosts, votePost , fetchComments, deletePost} from '../actions/action';
 import sortBy from 'sort-by';
 import  SortOrders  from '../components/sort-orders';
 import { SubmissionError } from 'redux-form';
@@ -11,36 +11,22 @@ import { Redirect } from 'react-router';
 class RootPage extends Component {
  
   componentDidMount() {
- 
+   let cmArr =["1ca0c417-8346-f5fe-09b3-74291edc3462", "8xf0y6ziyjabvozdd253nd"]
     this.props.fetchCategories();
     this.props.fetchPosts();
     let sortedPosts = this.props.posts.sort(sortBy('-voteScore'))
+
+    
   
-    // let commentsArr =[]
-    // this.props.posts.map(post => {
-    //   return (
-      this.props.fetchComments("8xf0y6ziyjabvozdd253nd")
-  
-    //   )
-    // })
-  
+    cmArr.map(id => {
+      return (
+        this.props.fetchComments(id),
+        this.props.comments.concat(this.props.comments)
+      )
+    })
+   
   }
-  componentWillReceiveProps(){
-      let commentsArr =[]
-    // this.props.posts.map(post => {
-    //   // return (
-      this.props.fetchComments("8xf0y6ziyjabvozdd253nd")
-    //   //  // console.log(post.id)
-      
-    //   //     )
-    //   //   })
-    // for (let i = 0; i < this.props.posts.length; i++) { 
-    //   this.props.fetchComments(i.id)
-    //   console.log(this.props.posts.length)
-  //}
-        console.log(commentsArr )
-    console.log(this.props.posts)
-  }
+  
   
   submitVotePost = (postId, vote) => {
   if(postId) {
@@ -55,7 +41,7 @@ class RootPage extends Component {
  }
 
 render() {
- 
+console.log(this.props.comments)
   let sortedData = this.props.posts;
     return (
       <div>
@@ -63,7 +49,7 @@ render() {
         <CategoriesList categories={this.props.categories}/>
           <h1>List of Posts</h1>
         <SortOrders unSortData={this.props.posts} onSortData={(sortedData) => {this.forceUpdate()}}/>
-        <PostList posts={sortedData} votePost={this.submitVotePost}/>
+        <PostList posts={sortedData} votePost={this.submitVotePost} deletePost={this.props.deletePost}/>
       </div>
     )
   }
@@ -88,4 +74,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {fetchCategories, fetchPosts,votePost, fetchComments})(RootPage);
+export default connect(mapStateToProps, {fetchCategories, fetchPosts,votePost, fetchComments, deletePost})(RootPage);

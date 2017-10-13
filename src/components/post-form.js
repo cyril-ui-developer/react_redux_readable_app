@@ -43,7 +43,7 @@ renderField = ({ input, label, type, meta: { touched, error } }) => (
     return (
       <Grid centered columns={2}>
         <Grid.Column>{this.props.post.category }
-         {post.id ?   <NavLink className='close-create-contact' to={`/post/details/${post.id}`}>Back</NavLink>  : ''}
+         {post.id ?   <NavLink className='close-create-contact' to={`/${post.category}/${post.id}`}>Back</NavLink>  : ''}
            <h1 style={{marginTop:"1em"}}>{post.id ? 'Edit Post' : 'Add New Post'}</h1>
            {post.category}
           <Form onSubmit={handleSubmit}> 

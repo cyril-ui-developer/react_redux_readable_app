@@ -68,19 +68,23 @@ class PostDetailsPage extends Component {
   let singleComment;
   let sortedComments = this.props.comments;
    let sortedData = this.props.comments;
-   console.log(this.props.comments)
+   console.log(this.props.post)
     return (
       <div>
-        <NavLink className='close-create-contact' to='/'>Back</NavLink>
-         <h1>Post Detail</h1>
-         <PostDetails key={this.props.post.id} postDetails={this.props.post} commentDetails={this.props.comments}  deletePost={this.props.deletePost}
-         deletePost={this.props.deletePost} votePost={this.submitVotePost}/>        
-         <br />   <br />   <br />
-         <Link to={`/newcomment`}>  Add New Comment </Link>
-         <hr />
-         <SortOrders unSortData={this.props.comments} onSortData={(sortedData) => {this.forceUpdate()}}/>
-         <CommentDetails  key={this.props.comment.id}  parentId={this.props.post} commentDetails={ sortedComments } onComment={(comment) => {}}  
-           deleteComment={this.props.deleteComment} voteComment={this.submitVoteComment}/>      
+           { (Object.keys(this.props.post).length !== 0) ?
+        <div> 
+            <NavLink className='close-create-contact' to='/'>Back</NavLink>
+            <h1>Post Detail</h1>
+            <PostDetails key={this.props.post.id} postDetails={this.props.post} commentDetails={this.props.comments}  deletePost={this.props.deletePost}
+             votePost={this.submitVotePost}/>        
+            <br />   <br />   <br />
+            <Link to={`/commentnew`}>  Add New Comment </Link>
+            <hr />
+            <SortOrders unSortData={this.props.comments} onSortData={(sortedData) => {this.forceUpdate()}}/>
+            <CommentDetails  key={this.props.comment.id}  post={this.props.post} commentDetails={ sortedComments } onComment={(comment) => {}}  
+              deleteComment={this.props.deleteComment} voteComment={this.submitVoteComment}/>  
+           </div>
+           : <Redirect to="/page-404" />}    
           {this.state.redirect ?
           <Redirect to="/" /> :null}
        </div>

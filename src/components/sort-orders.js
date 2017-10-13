@@ -30,7 +30,7 @@ class SortOrders extends Component {
         <label>
           Select Sorting Order:
           <select onChange={this.handlSsortOrderChange}>
-            <option value="voteScore" selected>Vote - Asc</option>
+            <option value="voteScore" defaultValue>Vote - Asc</option>
             <option value="-voteScore">Vote - Desc</option>
             <option value="timestamp">Timestamp - Asc</option>
             <option value="-timestamp">Timestamp - Desc</option>

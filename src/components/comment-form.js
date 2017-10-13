@@ -41,7 +41,7 @@ componentWillReceiveProps = (nextProps) => {
     return (
       <Grid columns={3}>
         <Grid.Column>
-        <NavLink className='close-create-contact' to={`/post/details/${comment.parentId}`}>Back</NavLink> 
+        <NavLink className='close-create-contact' to={`/`}>Back</NavLink> 
          <h1 style={{marginTop:"1em"}}>{comment.id ? 'Edit Comment' : 'Add New Comment'}</h1>  
           <Form onSubmit={handleSubmit}>       
             <Field name="body" component={this.renderTextareaField} label="Enter Comment" />    
