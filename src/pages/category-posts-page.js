@@ -45,7 +45,7 @@ class CategoryPostPage extends Component {
 
 function mapStateToProps(state) {
   return {
-      categoryPosts: state.readableStore.categoryPosts
+      categoryPosts: state.categoriesStore.categoryPosts
   }
 }
 

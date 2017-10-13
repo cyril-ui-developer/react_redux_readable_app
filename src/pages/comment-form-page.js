@@ -67,8 +67,8 @@ submit = (comment) => {
 
 function mapStateToProps(state) {
   return {
-      post: state.readableStore.post,
-      comment: state.readableStore.comment,
+      post: state.postsStore.post,
+      comment: state.commentsStore.comment,
   }
 }
 

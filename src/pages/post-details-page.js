@@ -95,9 +95,9 @@ class PostDetailsPage extends Component {
 function mapStateToProps(state) {
   console.log(state)
   return {
-      post: state.readableStore.post,
-      comment: state.readableStore.comment,
-      comments: state.readableStore.comments     
+      post: state.postsStore.post,
+      comment: state.commentsStore.comment,
+      comments: state.commentsStore.comments     
   }
 }
 

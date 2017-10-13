@@ -65,8 +65,8 @@ submit = (post) => {
 
 function mapStateToProps(state) {
   return {
-      categories : state.readableStore.categories,
-      post: state.readableStore.post,
+      categories : state.categoriesStore.categories,
+      post: state.postsStore.post,
   }
 }
 

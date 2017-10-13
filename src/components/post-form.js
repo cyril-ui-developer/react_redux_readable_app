@@ -17,6 +17,7 @@ componentWillReceiveProps = (nextProps) => {
 
 
 renderField = ({ input, label, type, meta: { touched, error } }) => (
+
     <Form.Field className={classnames({error:touched && error})}>
       <label>{label}</label>
       <input {...input} placeholder={label} type={type}/>
