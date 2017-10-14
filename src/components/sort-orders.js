@@ -25,11 +25,11 @@ class SortOrders extends Component {
     const cards = () => {
 
       return (
-        <div>
-        <form>
+        <div>        
+        <form >
         <label>
           <br />
-          <select onChange={this.handlSsortOrderChange}>
+          <select disabled={sortedData.length <= 1} onChange={this.handlSsortOrderChange}>
             <option value="voteScore" defaultValue>Vote - Asc</option>
             <option value="-voteScore">Vote - Desc</option>
             <option value="timestamp">Timestamp - Asc</option>
@@ -37,6 +37,7 @@ class SortOrders extends Component {
           </select>
           </label>
           </form>
+          <br />
        </div>
       )
   }
