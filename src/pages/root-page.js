@@ -69,7 +69,7 @@ function mapStateToProps(state) {
 
 
   return {
-      categories: state.categoriesStore.categories,
+      categories: state.postsStore.categories,
       posts: state.postsStore.posts,
       comments: state.commentsStore.comments     
   }

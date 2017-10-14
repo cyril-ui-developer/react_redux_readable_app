@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import CategoriesList from '../components/categories-list';
 import PostList from '../components/posts-list';
-import { fetchCategories, fetchPosts , fetchCategoryPosts, votePost} from '../actions/action';
+import { fetchCategories, fetchPosts , fetchCategoryPosts, votePost, deletePost} from '../actions/action';
 import  CategoryPostList  from '../components/category-posts-list';
 import { NavLink, Route } from 'react-router-dom';
 import  SortOrders  from '../components/sort-orders';
@@ -36,11 +36,11 @@ class CategoryPostPage extends Component {
       <div>
        <NavLink className='close-create-contact' to='/'>Back</NavLink>
         <h1>List of {this.pageTitle} Category Posts</h1>
-        {this.props.categoryPosts.length !== 0 ?
-        <section>
-        <SortOrders unSortData={this.props.categoryPosts} onSortData={(sortedData) => {this.forceUpdate()}}/>
-        <CategoryPostList catPosts={sortedData} votePost={this.submitVotePost}/>
-        </section>
+        { this.props.categoryPosts.length !== 0 ?
+          <section>
+          <SortOrders unSortData={this.props.categoryPosts} onSortData={(sortedData) => {this.forceUpdate()}}/>
+          <CategoryPostList catPosts={sortedData} votePost={this.submitVotePost} deletePost={this.props.deletePost}/>
+          </section>
         : <p> No post Aaailable in this category  </p>}
       
       </div>
@@ -50,8 +50,8 @@ class CategoryPostPage extends Component {
 
 function mapStateToProps(state) {
   return {
-      categoryPosts: state.categoriesStore.categoryPosts
+      categoryPosts: state.postsStore.categoryPosts
   }
 }
 
-export default connect(mapStateToProps, {fetchCategoryPosts, votePost})(CategoryPostPage);
+export default connect(mapStateToProps, {fetchCategoryPosts, votePost, deletePost})(CategoryPostPage);
