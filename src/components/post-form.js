@@ -13,6 +13,7 @@ componentWillReceiveProps = (nextProps) => {
   if(post.id !== this.props.post.id) { 
     this.props.initialize(post)
   }
+
 }
 
 
@@ -42,12 +43,24 @@ renderField = ({ input, label, type, meta: { touched, error } }) => (
     this.props.handleSubmit.timestamp= Date.now();
 
     return (
+       /*<form onSubmit={ handleSubmit }>
+      <div>
+        {this.props.post.category}
+        <label htmlFor="firstName">First Name</label>
+        <Field name="category" component="input" type="text" value={this.props.post.category ? this.props.post.category : ""} />
+      </div>
+      <div>
+        <label htmlFor="lastName">Last Name</label>
+        <Field name="title" component="input" type="text" value={this.props.post.title ? this.props.post.title : ""} />
+      </div>
+      <button type="submit">Submit</button>
+    </form>*/
       <Grid centered columns={2}>
         <Grid.Column>
          {post.id ?   <NavLink className='close-create-contact' to={`/${post.category}/${post.id}`}>Back</NavLink>  : ''}
            <h1 style={{marginTop:"1em"}}>{post.id ? 'Edit Post' : 'Add New Post'}</h1>
           <Form onSubmit={handleSubmit}> 
-            <Field value={this.props.post.category ? this.props.post.category : ""} name="category" type="text"  component={this.renderField} label="Enter Category i.e. react, udacity or redux"/> 
+            <Field name="category" type="text"  component={this.renderField} label="Enter Category i.e. react, udacity or redux"/> 
             <Field name="title" type="text" component={this.renderField} label=" Enter Title"/>
             <Field name="body" component={this.renderTextareaField} label="Enter Post"/>
             <Field name="author" type="text"  component={this.renderField} label="Enter Author"/>
