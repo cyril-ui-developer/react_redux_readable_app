@@ -31,7 +31,7 @@ class App extends Component {
           <Route  exact  path="/:category/comments/:id" component={CommentFormPage}/> 
           <Route  exact path="/nopostfound" component={ NoPostFoundPage }/> 
           <Route  exact path="/:name" component={CategoryPostPage}/>
-          <Route path='*' component={Page404} />
+          <Redirect from='*' component={Page404} />
         </Switch>
       </Container>
     );
