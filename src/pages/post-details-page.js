@@ -74,15 +74,21 @@ class PostDetailsPage extends Component {
            { (Object.keys(this.props.post).length !== 0) ?
         <div> 
             <NavLink className='close-create-contact' to='/'>Back</NavLink>
-            <h1>Post Detail</h1>
+            <h1>Post Detail</h1> <br />
             <PostDetails key={this.props.post.id} postDetails={this.props.post} commentDetails={this.props.comments}  deletePost={this.props.deletePost}
              votePost={this.submitVotePost}/>        
             <br />   <br />   <br />
             <Link exact  to={`/commentnew`}>  Add New Comment </Link>
             <hr />
-            <SortOrders unSortData={this.props.comments} onSortData={(sortedData) => {this.forceUpdate()}}/>
-            <CommentDetails  key={this.props.comment.id}  post={this.props.post} commentDetails={ sortedComments } onComment={(comment) => {}}  
-              deleteComment={this.props.deleteComment} voteComment={this.submitVoteComment}/>  
+             { this.props.comments.length !== 0 ?
+               <section>
+                <h3> Comments </h3> 
+                <SortOrders unSortData={this.props.comments} onSortData={(sortedData) => {this.forceUpdate()}}/>
+                  <br /> <br />
+                <CommentDetails  key={this.props.comment.id}  post={this.props.post} commentDetails={ sortedComments } onComment={(comment) => {}}  
+                deleteComment={this.props.deleteComment} voteComment={this.submitVoteComment}/>                
+              </section>
+              : <h3> No Comment Available </h3> }
            </div>
            : <Redirect to="/nopostfound" />}    
           {this.state.redirect ?

@@ -43,10 +43,9 @@ renderField = ({ input, label, type, meta: { touched, error } }) => (
 
     return (
       <Grid centered columns={2}>
-        <Grid.Column>{this.props.post.category }
+        <Grid.Column>
          {post.id ?   <NavLink className='close-create-contact' to={`/${post.category}/${post.id}`}>Back</NavLink>  : ''}
            <h1 style={{marginTop:"1em"}}>{post.id ? 'Edit Post' : 'Add New Post'}</h1>
-           {post.category}
           <Form onSubmit={handleSubmit}> 
             <Field value={this.props.post.category ? this.props.post.category : ""} name="category" type="text"  component={this.renderField} label="Enter Category i.e. react, udacity or redux"/> 
             <Field name="title" type="text" component={this.renderField} label=" Enter Title"/>

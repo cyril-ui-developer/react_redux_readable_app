@@ -18,13 +18,12 @@ class CommentDetails extends Component {
 
       return (
         <div>
-          <h3> Comments </h3> <hr/> <hr/>
          {this.props.commentDetails.map(comment => {
           return (
             <div>  
-               <p>Content:{comment.body}</p>
-               <p>Date/Time: {(new Date(comment.timestamp)).toString()}</p>
-               <p> Author: {comment.author}</p>
+               <p><strong>Content:</strong>{comment.body}</p>
+               <p><strong>Date/Time:</strong> {(new Date(comment.timestamp)).toString()}</p>
+               <p><strong> Author: </strong>{comment.author}</p>
               <Card>
               <Card.Content extra>
               <button onClick={()=>{ this.props.voteComment(comment.id, "upVote")}}>+</button>

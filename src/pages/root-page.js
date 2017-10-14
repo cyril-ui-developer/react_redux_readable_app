@@ -57,17 +57,6 @@ console.log(this.props.comments)
 }
 
 function mapStateToProps(state) {
-  console.log(state)
-  // let commentsArr =[]
-  // state.readableStore.posts.map(post => {
-  //   return (
-  //   commentsArr.push(this.props.fetchComments(post.id))
-
-  //   )
-  // })
-  // console.log(commentsArr)
-
-
   return {
       categories: state.postsStore.categories,
       posts: state.postsStore.posts,

@@ -11,10 +11,10 @@ export default function PostDetails({postDetails, commentDetails, deletePost,vot
         
       <div>  
           <h3>Title: {postDetails.title} </h3>
-          <p>Content: {postDetails.body} </p>
-          <p>Category: {postDetails.category} </p>
-          <p>Author: {postDetails.author} </p>
-          <p>Date / Time:{(new Date(postDetails.timestamp)).toString()}</p>
+          <p><strong>Content:</strong> {postDetails.body} </p>
+          <p><strong>Category:</strong> {postDetails.category} </p>
+          <p><strong>Author: </strong>{postDetails.author} </p>
+          <p><strong>Date / Time:</strong>{(new Date(postDetails.timestamp)).toString()}</p>
           <Card>
             <Card.Content extra>
             <button onClick={()=>{ votePost(postDetails.id, "upVote")}}>+</button>

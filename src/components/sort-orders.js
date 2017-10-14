@@ -28,7 +28,7 @@ class SortOrders extends Component {
         <div>
         <form>
         <label>
-          Select Sorting Order:
+          <br />
           <select onChange={this.handlSsortOrderChange}>
             <option value="voteScore" defaultValue>Vote - Asc</option>
             <option value="-voteScore">Vote - Desc</option>
