@@ -71,10 +71,10 @@ class PostDetailsPage extends Component {
    console.log(this.props.post)
     return (
       <div>
-           { (Object.keys(this.props.post).length !== 0) ?
+           {/*{ (Object.keys(this.props.post).length !== 0) ?*/}
         <div> 
             <NavLink className='close-create-contact' to='/'>Back</NavLink>
-            <h1>Post Detail</h1> <br />
+            <h1>Post Details</h1> <br />
             <PostDetails key={this.props.post.id} postDetails={this.props.post} commentDetails={this.props.comments}  deletePost={this.props.deletePost}
              votePost={this.submitVotePost}/>        
             <br />   <br />   <br />
@@ -90,7 +90,7 @@ class PostDetailsPage extends Component {
               </section>
               : <h3> No Comment Available </h3> }
            </div>
-           : <Redirect to="/nopostfound" />}    
+           {/*: <Redirect to="/nopostfound" />}    */}
           {this.state.redirect ?
           <Redirect to="/" /> :null}
        </div>

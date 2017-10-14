@@ -6,6 +6,13 @@ let divStyle = {
   margin: '3px'
 };
 
+let truncate  = { 
+  width: '270px',
+  whiteSpace: 'nowrap',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis'
+}
+
 export default function PostCard({post, deletePost, votePost}) {
   return (
     <div style={divStyle}>
@@ -13,10 +20,10 @@ export default function PostCard({post, deletePost, votePost}) {
           <Card>
             <Card.Content>
               <Card.Header>
-                <Link to={`/${post.category}/${post.id}`}  className="ui basic button green">  {post.title}</Link>
+                <Link style={truncate} to={`/${post.category}/${post.id}`}  className="ui basic button green">  {post.title}</Link>
               </Card.Header>
               <Card.Description>
-                <p>{post.body}</p>
+                <p style={truncate}>{post.body}</p>
                 <p>{(new Date(post.timestamp)).toString()}</p>
                 <p>Author: {post.author}</p>
                 <button onClick={()=>{ votePost(post.id, "upVote")}}>+</button>
