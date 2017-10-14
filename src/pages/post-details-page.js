@@ -78,13 +78,13 @@ class PostDetailsPage extends Component {
             <PostDetails key={this.props.post.id} postDetails={this.props.post} commentDetails={this.props.comments}  deletePost={this.props.deletePost}
              votePost={this.submitVotePost}/>        
             <br />   <br />   <br />
-            <Link to={`/commentnew`}>  Add New Comment </Link>
+            <Link exact  to={`/commentnew`}>  Add New Comment </Link>
             <hr />
             <SortOrders unSortData={this.props.comments} onSortData={(sortedData) => {this.forceUpdate()}}/>
             <CommentDetails  key={this.props.comment.id}  post={this.props.post} commentDetails={ sortedComments } onComment={(comment) => {}}  
               deleteComment={this.props.deleteComment} voteComment={this.submitVoteComment}/>  
            </div>
-           : <Redirect to="/page-404" />}    
+           : <Redirect to="/nopostfound" />}    
           {this.state.redirect ?
           <Redirect to="/" /> :null}
        </div>

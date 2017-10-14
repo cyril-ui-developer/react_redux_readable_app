@@ -7,7 +7,7 @@ export default function CategoryPostList({catPosts, votePost}){
   const cards = () => {
     return catPosts.map(cat => {
       return (
-          <PostCard key={cat.title} post={cat} votePost={votePost}/>  
+          <PostCard key={cat.title} post={cat} votePost={votePost}/> 
       )
     })
   }

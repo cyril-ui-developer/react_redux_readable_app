@@ -14,5 +14,4 @@ render() {
   }
 }
 
-
 export default Page404;

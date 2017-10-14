@@ -36,8 +36,13 @@ class CategoryPostPage extends Component {
       <div>
        <NavLink className='close-create-contact' to='/'>Back</NavLink>
         <h1>List of {this.pageTitle} Category Posts</h1>
+        {this.props.categoryPosts.length !== 0 ?
+        <section>
         <SortOrders unSortData={this.props.categoryPosts} onSortData={(sortedData) => {this.forceUpdate()}}/>
         <CategoryPostList catPosts={sortedData} votePost={this.submitVotePost}/>
+        </section>
+        : <p> No post Aaailable in this category  </p>}
+      
       </div>
     )
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Button, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-export default function PostCard({post, deletePost, votePost,postCommentsCount}) {
+export default function PostCard({post, deletePost, votePost}) {
   return (
     <Card>
       <Card.Content>
@@ -16,7 +16,7 @@ export default function PostCard({post, deletePost, votePost,postCommentsCount})
            <button onClick={()=>{ votePost(post.id, "upVote")}}>+</button>
             <span> {post.voteScore} </span>
             <button onClick={()=>{ votePost(post.id, "downVote") }}>-</button>
-               Comment({postCommentsCount.length})
+               Comment({0})
             <Link to={`/post/edit/${post.id}`} > <Icon name='edit outline'/> </Link>
             <Link to={`/`} ><Icon name='delete outline' onClick={() => deletePost(post.id)}/> </Link>
         </Card.Description>
