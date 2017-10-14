@@ -31,7 +31,7 @@ export default (state=defaultState, action={}) => {
    case "FETCH_POSTS_FULFILLED": {
       return {
         ...state,
-        posts: [...action.payload.data, state.comments]
+        posts: action.payload.data
       }
     }
     case 'NEW_POST': {
@@ -80,6 +80,7 @@ export default (state=defaultState, action={}) => {
       ...state,
       posts: state.posts.filter(p => p.id !== id),
       comments: state.comments.filter(c => c.parentId !== id)
+    //  posts: action.payload.data
     }
   }
   
