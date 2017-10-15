@@ -75,6 +75,15 @@ export function fetchComments(id){
   }
 }
 
+export function fetchPostsComments(id){
+  return dispatch => {
+    dispatch({
+      type: 'FETCH_POSTSCOMMENTS',
+      payload: client.get(`${url_posts}/${id}/comments`)
+    })
+  }
+}
+
 export function newComment() {
   return dispatch => {
     dispatch({

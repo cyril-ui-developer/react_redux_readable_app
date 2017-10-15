@@ -1,6 +1,7 @@
 const defaultState = {
   comments:[],
-  comment:{}
+  comment:{},
+  allPostsComments:[]
 }
 
 export default (state=defaultState, action={}) => {
@@ -24,6 +25,13 @@ export default (state=defaultState, action={}) => {
       return {
         ...state,
         comments: action.payload.data
+      }
+    }
+
+      case "FETCH_POSTSCOMMENTS_FULFILLED": {
+      return {
+        ...state,
+          allPostsComments: [...state.allPostsComments, ...action.payload.data]
       }
     }
 

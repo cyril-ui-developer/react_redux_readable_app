@@ -21,7 +21,7 @@ import { Component} from 'react';
     return this.props.posts.map(post => {
       return (
         <PostCard key={post.title} post={post} votePost={this.props.votePost} deletePost={this.props.deletePost}
-        postCommentsCount={this.props.postCommentsCount}/>
+        postCommentsCount={this.props.postCommentsCount} allPostsComments={this.props.allPostsComments}/>
       )
     })
   }
