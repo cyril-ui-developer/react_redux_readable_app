@@ -93,7 +93,7 @@ class PostDetailsPage extends Component {
                 <SortOrders unSortData={this.props.comments} onSortData={(sortedData) => {this.forceUpdate() ; this.defaultSort = false}}/>
                   <br /> <br />
                 <CommentDetails  key={this.props.comment.id}  post={this.props.post} commentDetails={ sortedComments } onComment={(comment) => {}}  
-                deleteComment={this.props.deleteComment} voteComment={this.submitVoteComment}/>                
+                deleteComment={this.props.deleteComment} voteComment={this.submitVoteComment} />                
               </section>
               : <h3> No Comment Available </h3> }
            </div>
