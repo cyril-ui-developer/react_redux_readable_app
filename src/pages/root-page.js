@@ -11,11 +11,11 @@ import { Redirect } from 'react-router';
 class RootPage extends Component {
  
   componentDidMount() {
-   let cmArr =["1ca0c417-8346-f5fe-09b3-74291edc3462", "8xf0y6ziyjabvozdd253nd"]
+    let cmArr =["1ca0c417-8346-f5fe-09b3-74291edc3462", "8xf0y6ziyjabvozdd253nd"]
     this.props.fetchCategories();
     this.props.fetchPosts();
     let sortedPosts = this.props.posts.sort(sortBy('-voteScore'))
-     this.defaultSort = true;
+    this.defaultSort = true;
     
   
     cmArr.map(id => {

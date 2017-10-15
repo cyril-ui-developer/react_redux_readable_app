@@ -57,17 +57,24 @@ class PostDetailsPage extends Component {
   }
 
   componentDidMount() {   
-  const { id} = this.props.match.params;
-  let pageTitle = id;
-   console.log(pageTitle)
+    const { id} = this.props.match.params;
+    let pageTitle = id;
+    console.log(pageTitle)
     this.props.fetchPost(id);
     this.props.fetchComments(id)
+    this.defaultSort = true;
   }
 
   render() {
-  let singleComment;
-  let sortedComments = this.props.comments;
-   let sortedData = this.props.comments;
+    let sortedData = [];
+    let sortedComments = this.props.comments;
+    if(this.defaultSort){
+       sortedData  = this.props.comments.sort(sortBy('-voteScore'))
+    }else{
+       sortedData = this.props.posts;
+    }
+  
+
    console.log(this.props.post)
     return (
       <div>
@@ -83,7 +90,7 @@ class PostDetailsPage extends Component {
              { this.props.comments.length !== 0 ?
                <section>
                 <h3> Comments </h3> 
-                <SortOrders unSortData={this.props.comments} onSortData={(sortedData) => {this.forceUpdate()}}/>
+                <SortOrders unSortData={this.props.comments} onSortData={(sortedData) => {this.forceUpdate() ; this.defaultSort = false}}/>
                   <br /> <br />
                 <CommentDetails  key={this.props.comment.id}  post={this.props.post} commentDetails={ sortedComments } onComment={(comment) => {}}  
                 deleteComment={this.props.deleteComment} voteComment={this.submitVoteComment}/>                

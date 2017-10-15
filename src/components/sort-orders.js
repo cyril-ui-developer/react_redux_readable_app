@@ -29,9 +29,9 @@ class SortOrders extends Component {
         <form >
         <label>
           <br />
-          <select disabled={sortedData.length <= 1} onChange={this.handlSsortOrderChange}>
+          <select defaultValue="-voteScore" disabled={sortedData.length <= 1} onChange={this.handlSsortOrderChange}>
             <option value="voteScore">Vote - Asc</option>
-            <option value="-voteScore" selected defaultValue>Vote - Desc</option>
+            <option value="-voteScore" >Vote - Desc</option>
             <option value="timestamp">Timestamp - Asc</option>
             <option value="-timestamp">Timestamp - Desc</option>
           </select>
