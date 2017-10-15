@@ -22,12 +22,12 @@ export default (state=defaultState, action={}) => {
         categoryPosts: action.payload.data
       }
     }
-    case "FETCH_COMMENTS_FULFILLED": {
-      return {
-        ...state,
-        comments: action.payload.data
-      }
-    }
+    // case "FETCH_COMMENTS_FULFILLED": {
+    //   return {
+    //     ...state,
+    //     comments: action.payload.data
+    //   }
+    // }
    case "FETCH_POSTS_FULFILLED": {
       return {
         ...state,
@@ -66,23 +66,23 @@ export default (state=defaultState, action={}) => {
     }
 
   
-  case 'NEW_POST': {
-      return {
-        ...state,
-        comment: {}
-      }
-    }
+  // case 'NEW_POST': {
+  //     return {
+  //       ...state,
+  //       comment: {}
+  //     }
+  //   }
   
 
-  case 'DELETE_POST_FULFILLED': {
-    const id = action.payload.data.id;
-    return {
-      ...state,
-      posts: state.posts.filter(p => p.id !== id),
-      comments: state.comments.filter(c => c.parentId !== id)
-    //  posts: action.payload.data
+    case 'DELETE_POST_FULFILLED': {
+      const id = action.payload.data.id;
+      return {
+        ...state,
+        posts: state.posts.filter(p => p.id !== id)
+     //   comments: state.comments.filter(c => c.parentId !== id)
+      //  posts: action.payload.data
+      }
     }
-  }
   
 
     case 'VOTE_POST_FULFILLED': {

@@ -27,6 +27,7 @@ class CommentFormPage extends Component {
     } else {
       this.props.newComment();
     }
+   // this.forceUpdate();
   }
   
 
@@ -52,7 +53,7 @@ submit = (comment) => {
 }
 
   render() {
-        const { post} = this.props;
+    const { post} = this.props;
     return (
       <div>
         {

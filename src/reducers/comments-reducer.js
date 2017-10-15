@@ -6,6 +6,13 @@ const defaultState = {
 export default (state=defaultState, action={}) => {
   switch (action.type) {
 
+  case 'NEW_POST': {
+      return {
+        ...state,
+        comment: {}
+      }
+    }
+    
   case 'SAVE_COMMENT_FULFILLED': {
       return {
         ...state,

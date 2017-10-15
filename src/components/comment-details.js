@@ -11,7 +11,7 @@ class CommentDetails extends Component {
    if (this.props.onComment){
        this.props.onComment(comment);
     }
-    this.forceUpdate()
+   // this.forceUpdate()
   }
  render() {
 
