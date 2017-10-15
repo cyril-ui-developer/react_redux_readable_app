@@ -17,14 +17,14 @@ class RootPage extends Component {
     let sortedPosts = this.props.posts.sort(sortBy('-voteScore'))
     this.defaultSort = true;
     
-  
+    let jop =[]
     cmArr.map(id => {
       return (
         this.props.fetchComments(id),
-        this.props.comments.concat(this.props.comments)
+        jop.concat(this.props.comments)
       )
     })
-   
+   console.log(jop)
   }
   
   
@@ -51,9 +51,9 @@ console.log(this.props.comments)
   
     return (
       <div>
-        <h1>List of Categories</h1>
+        <h1>Categories</h1>
         <CategoriesList categories={this.props.categories}/>
-          <h1>List of Posts</h1>
+          <h1>Posts</h1>
         <SortOrders unSortData={this.props.posts} onSortData={(sortedData) => {this.forceUpdate(); this.defaultSort = false}}/>
         <PostList posts={sortedData} votePost={this.submitVotePost} deletePost={this.props.deletePost}
         postCommentsCount={this.props.comments}/>

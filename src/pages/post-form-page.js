@@ -55,7 +55,7 @@ submit = (post) => {
     return (
       <div>
         {
-          this.state.redirect ? <Redirect to={`/`} />
+          this.state.redirect ? <Redirect to={`/${post.category}/${post.id}`} />
         : <PostForm categories={this.props.categories} post={this.props.post} onSubmit={this.submit} />
         }       
       </div>
