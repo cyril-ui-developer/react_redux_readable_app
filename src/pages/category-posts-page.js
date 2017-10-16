@@ -39,7 +39,8 @@ class CategoryPostPage extends Component {
         { this.props.categoryPosts.length !== 0 ?
           <section>
           <SortOrders unSortData={this.props.categoryPosts} onSortData={(sortedData) => {this.forceUpdate()}}/>
-          <CategoryPostList catPosts={sortedData} votePost={this.submitVotePost} deletePost={this.props.deletePost}/>
+          <CategoryPostList catPosts={sortedData} votePost={this.submitVotePost} deletePost={this.props.deletePost}
+           allPostsComments={this.props.allPostsComments}/>
           </section>
         : <p> No post Aaailable in this category  </p>}
       
@@ -50,7 +51,8 @@ class CategoryPostPage extends Component {
 
 function mapStateToProps(state) {
   return {
-      categoryPosts: state.postsStore.categoryPosts
+      categoryPosts: state.postsStore.categoryPosts,
+      allPostsComments:state.commentsStore.allPostsComments
   }
 }
 

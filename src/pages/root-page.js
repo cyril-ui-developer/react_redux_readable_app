@@ -8,26 +8,31 @@ import  SortOrders  from '../components/sort-orders';
 import { SubmissionError } from 'redux-form';
 import { Redirect } from 'react-router';
 
+
 class RootPage extends Component {
- 
+
   componentDidMount() {
-    let cmArr =["3980f3fd-803e-4fea-5cd6-d12fd2b41c4a", "dca74d13-7f4b-4923-b0e0-11dd37ba7f8d"]
-    this.props.fetchCategories();
-    this.props.fetchPosts();
-    let sortedPosts = this.props.posts.sort(sortBy('-voteScore'))
-    this.defaultSort = true;
-        //  this.props.fetchPostsComments("dca74d13-7f4b-4923-b0e0-11dd37ba7f8d")
-    let jop =[]
-    cmArr.map(id => {
-      return (
-        this.props.fetchPostsComments(id),
-     console.log('test')
-      )
-    })
-   console.log(jop)
+    //let cmArr =["3980f3fd-803e-4fea-5cd6-d12fd2b41c4a", "dca74d13-7f4b-4923-b0e0-11dd37ba7f8d"]
+      this.defaultSort = true;
+      this.props.fetchCategories();
+      this.props.fetchPosts();
   }
-  
-  
+
+// this method cause the propgram to enter infinite loop
+/*shouldComponentUpdate(newProps, newState) {
+   if (newProps.posts) {
+       this.props.posts.map(data => {
+          return (        
+           this.props.fetchPostsComments(data.id),
+          console.log('shouldComponentUpdate')
+      )
+      })
+          return true;
+        } else {
+          return false
+        }
+  }
+*/
   submitVotePost = (postId, vote) => {
   if(postId) {
     console.log(postId)
@@ -66,7 +71,7 @@ function mapStateToProps(state) {
   return {
       categories: state.postsStore.categories,
       posts: state.postsStore.posts,
-      comments: state.commentsStore.comments,
+   //   comments: state.commentsStore.comments,
       allPostsComments:state.commentsStore.allPostsComments
            
   }

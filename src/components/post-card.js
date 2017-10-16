@@ -12,9 +12,7 @@ let truncate  = {
   overflow: 'hidden',
   textOverflow: 'ellipsis'
 }
-//  function filterComments(){
-//    allPostsComments.filter(c => c.parentId === post.id)
-//  }
+
 export default function PostCard({post, deletePost, votePost, allPostsComments}) {
   let postComments = [];
   postComments = allPostsComments.filter(c => c.parentId === post.id)

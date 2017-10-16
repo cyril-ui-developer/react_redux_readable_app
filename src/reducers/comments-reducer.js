@@ -1,3 +1,5 @@
+import { _ } from 'underscore'
+
 const defaultState = {
   comments:[],
   comment:{},
@@ -28,10 +30,12 @@ export default (state=defaultState, action={}) => {
       }
     }
 
-      case "FETCH_POSTSCOMMENTS_FULFILLED": {
+    case "FETCH_POSTSCOMMENTS_FULFILLED": {
       return {
         ...state,
-          allPostsComments: [...state.allPostsComments, ...action.payload.data]
+         // allPostsComments: [...state.allPostsComments, ...action.payload.data],
+         allPostsComments: _.uniq([...state.allPostsComments, ...action.payload.data], function(c, id){ return c.id })
+          
       }
     }
 
