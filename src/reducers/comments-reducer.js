@@ -30,14 +30,14 @@ export default (state=defaultState, action={}) => {
       }
     }
 
-    case "FETCH_POSTSCOMMENTS_FULFILLED": {
-      return {
-        ...state,
-         // allPostsComments: [...state.allPostsComments, ...action.payload.data],
-         allPostsComments: _.uniq([...state.allPostsComments, ...action.payload.data], function(c, id){ return c.id })
+    // case "FETCH_POSTSCOMMENTS_FULFILLED": {
+    //   return {
+    //     ...state,
+    //      // allPostsComments: [...state.allPostsComments, ...action.payload.data],
+    //      allPostsComments: _.uniq([...state.allPostsComments, ...action.payload.data], function(c, id){ return c.id })
           
-      }
-    }
+    //   }
+    // }
 
    case 'FETCH_COMMENT_FULFILLED': {
       return {

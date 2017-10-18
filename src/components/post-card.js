@@ -13,9 +13,8 @@ let truncate  = {
   textOverflow: 'ellipsis'
 }
 
-export default function PostCard({post, deletePost, votePost, allPostsComments}) {
-  let postComments = [];
-  postComments = allPostsComments.filter(c => c.parentId === post.id)
+export default function PostCard({post, deletePost, votePost}) {
+//  postComments = allPostsComments.filter(c => c.parentId === post.id)
   return (
     <div style={divStyle}>
       { !post.deleted? 
@@ -31,7 +30,7 @@ export default function PostCard({post, deletePost, votePost, allPostsComments})
                 <button onClick={()=>{ votePost(post.id, "upVote")}}>+</button>
                   <span> {post.voteScore} </span>
                   <button onClick={()=>{ votePost(post.id, "downVote") }}>-</button>
-                    Comment({postComments.length})
+                    Comment({post.commentCount})
                   <Link to={`/post/edit/${post.id}`} onClick={() => {  this.forceUpdate()}}> <Icon name='edit outline'/> </Link>
                   <Link to={`/`} ><Icon name='delete outline' onClick={() => {deletePost(post.id)}}/> </Link>
               </Card.Description>
