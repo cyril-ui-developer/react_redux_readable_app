@@ -1,6 +1,5 @@
 import React from 'react';
-import { Card, Button, Icon } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Card} from 'semantic-ui-react';
 import { Component} from 'react';
 import sortBy from 'sort-by';
 
@@ -8,7 +7,6 @@ class SortOrders extends Component {
 
  handlSsortOrderChange = (e) => {
    let sortedData  =this.props.unSortData.sort(sortBy(e.target.value));
-   console.log(e.target.value)
    e.preventDefault()
     
    if (this.props.onSortData){
@@ -21,9 +19,8 @@ class SortOrders extends Component {
 
  render() {
    let sortedData = this.props.unSortData;
-   console.log(sortedData)
+   
     const cards = () => {
-
       return (
         <div>        
         <form >

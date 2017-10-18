@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, Icon } from 'semantic-ui-react';
+import { Card, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { Component} from 'react';
 
@@ -11,7 +11,6 @@ class CommentDetails extends Component {
    if (this.props.onComment){
        this.props.onComment(comment);
     }
-   // this.forceUpdate()
   }
  render() {
 
@@ -30,8 +29,8 @@ class CommentDetails extends Component {
               <button onClick={()=>{ this.props.voteComment(comment.id, "upVote")}}>+</button>
               <span> {comment.voteScore} </span>
               <button onClick={()=>{ this.props.voteComment(comment.id, "downVote") }}>-</button>
-              <Link to={`comments/${comment.id}`} onClick={(comment) => this.handleSelectChange}> <Icon name='edit outline'/> </Link>
-              <Link to={`${this.props.post.id}`} onClick={() => this.props.deleteComment(comment.id)}><Icon name='delete outline'/> </Link>
+              <Link to={`comments/${comment.id}`} onClick={(comment) => this.handleSelectChange}> <Icon name='edit'/> </Link>
+              <Link to={`${this.props.post.id}`} onClick={() => this.props.deleteComment(comment.id)}><Icon name='delete'/> </Link>
             </Card.Content>
               </Card>
                <hr/>

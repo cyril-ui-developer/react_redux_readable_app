@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Form, Grid, Button } from 'semantic-ui-react';
 import { Field, reduxForm } from 'redux-form';
-import { NavLink, Route } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import classnames from 'classnames';
 
 

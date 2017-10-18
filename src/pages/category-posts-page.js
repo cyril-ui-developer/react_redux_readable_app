@@ -2,9 +2,9 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import CategoriesList from '../components/categories-list';
 import PostList from '../components/posts-list';
-import { fetchCategories, fetchPosts , fetchCategoryPosts, votePost, deletePost} from '../actions/action';
+import { fetchCategories, fetchPosts , fetchCategoryPosts, votePost, deletePost} from '../actions/index';
 import  CategoryPostList  from '../components/category-posts-list';
-import { NavLink, Route } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import  SortOrders  from '../components/sort-orders';
 import { SubmissionError } from 'redux-form';
 import { Redirect } from 'react-router';
@@ -12,16 +12,13 @@ import { Redirect } from 'react-router';
 class CategoryPostPage extends Component {
 
   componentDidMount() {
-  const { name } = this.props.match.params;
-  let pageTitle = name;
-   console.log(pageTitle)
+    const { name } = this.props.match.params;
+    let pageTitle = name;
     this.props.fetchCategoryPosts(name);
   }
 
   submitVotePost = (postId, vote) => {
   if(postId) {
-    console.log(postId)
-    console.log(vote)
     return this.props.votePost(postId, vote)
       .then(response => this.setState({ redirect:true}))
       .catch(err => {

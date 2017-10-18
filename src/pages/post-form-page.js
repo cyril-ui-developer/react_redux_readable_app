@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import PostForm from '../components/post-form';
 import { connect } from 'react-redux';
-import { newPost, savePost, updatePost, fetchPost, fetchCategories } from '../actions/action';
+import { newPost, savePost, updatePost, fetchPost, fetchCategories } from '../actions/index';
 import { SubmissionError } from 'redux-form';
 import { Redirect } from 'react-router';
 
@@ -51,12 +51,13 @@ submit = (post) => {
 }
 
   render() {
-   const { post} = this.props;
+   const { post, categories} = this.props;
     return (
       <div>
+         {/*this.state.redirect ? <Redirect to={`/${post.category}/${post.id}`} />*/}
         {
-          this.state.redirect ? <Redirect to={`/${post.category}/${post.id}`} />
-        : <PostForm categories={this.props.categories} post={this.props.post} onSubmit={this.submit} />
+          this.state.redirect ? <Redirect to={`/`} />
+        : <PostForm categories={categories} post={post} onSubmit={this.submit} />
         }       
       </div>
     )

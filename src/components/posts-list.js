@@ -1,27 +1,13 @@
 import React from 'react';
 import { Card } from 'semantic-ui-react';
 import PostCard from './post-card';
-import sortBy from 'sort-by';
-import { Component} from 'react';
 
-//export default function PostList({posts}){
-  class PostList extends Component {
+export default function PostList({posts, votePost, deletePost}){
 
-  componentDidMount(){
-    let sortedData
-    sortedData = this.props.posts.sort(sortBy('-voteScore'))
-    
-  }
-  
-
-
- render() {
-     
   const cards = () => {
-    return this.props.posts.map(post => {
+    return posts.map(post => {
       return (
-        <PostCard key={post.title} post={post} votePost={this.props.votePost} deletePost={this.props.deletePost}
-        postCommentsCount={this.props.postCommentsCount} allPostsComments={this.props.allPostsComments}/>
+        <PostCard key={post.title} post={post} votePost={votePost} deletePost={deletePost}/>
       )
     })
   }
@@ -32,7 +18,3 @@ import { Component} from 'react';
     </Card.Group>
   )
 }
-  }
-
-
-export default PostList ;

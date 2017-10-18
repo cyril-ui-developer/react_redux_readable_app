@@ -1,18 +1,12 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
-import CategoriesList from '../components/categories-list';
-import PostList from '../components/posts-list';
-import { fetchPost , saveComment, updateComment, fetchComments, deletePost, deleteComment, votePost, voteComment} from '../actions/action';
-import  CategoryPostList  from '../components/category-posts-list';
+import { fetchPost , saveComment, updateComment, fetchComments, deletePost, deleteComment, votePost, voteComment} from '../actions/index';
 import  PostDetails  from '../components/post-details';
 import  CommentDetails from '../components/comment-details'
-import { NavLink, Route } from 'react-router-dom';
-import CommentForm from '../components/comment-form';
+import { NavLink } from 'react-router-dom';
 import { SubmissionError } from 'redux-form';
 import { Redirect } from 'react-router';
-import PostCard from '../components/post-card';
 import { Link } from 'react-router-dom';
-import { Card, Button, Icon } from 'semantic-ui-react';
 import sortBy from 'sort-by';
 import  SortOrders  from '../components/sort-orders';
 
@@ -33,8 +27,6 @@ class PostDetailsPage extends Component {
 
   submitVotePost = (postId, vote) => {
   if(postId) {
-    console.log(postId)
-    console.log(vote)
     return this.props.votePost(postId, vote)
       .then(response => this.setState({ redirect:false}))
       .catch(err => {
@@ -46,8 +38,6 @@ class PostDetailsPage extends Component {
 
   submitVoteComment = (postId, vote) => {
   if(postId) {
-    console.log(postId)
-    console.log(vote)
     return this.props.voteComment(postId, vote)
       .then(response => this.setState({ redirect:false}))
       .catch(err => {
@@ -58,8 +48,6 @@ class PostDetailsPage extends Component {
 
   componentDidMount() {   
     const { id} = this.props.match.params;
-    let pageTitle = id;
-    console.log(pageTitle)
     this.props.fetchPost(id);
     this.props.fetchComments(id)
     this.defaultSort = true;
@@ -74,8 +62,6 @@ class PostDetailsPage extends Component {
        sortedData = this.props.posts;
     }
   
-
-   console.log(this.props.post)
     return (
       <div>
            {/*{ (Object.keys(this.props.post).length !== 0) ?*/}
@@ -85,14 +71,14 @@ class PostDetailsPage extends Component {
             <PostDetails key={this.props.post.id} postDetails={this.props.post} commentDetails={this.props.comments}  deletePost={this.props.deletePost}
              votePost={this.submitVotePost}/>        
             <br />   <br />   <br />
-            <Link exact  to={`/commentnew`}>  Add New Comment </Link>
+            <Link to={`/commentnew`}>  Add New Comment </Link>
             <hr />
              { this.props.comments.length !== 0 ?
                <section>
                 <h3> Comments </h3> 
                 <SortOrders unSortData={this.props.comments} onSortData={(sortedData) => {this.forceUpdate() ; this.defaultSort = false}}/>
                   <br /> <br />
-                <CommentDetails  key={this.props.comment.id}  post={this.props.post} commentDetails={ sortedComments } onComment={(comment) => {}}  
+                <CommentDetails key={this.props.post.id} post={this.props.post} commentDetails={ sortedComments } onComment={(comment) => {}}  
                 deleteComment={this.props.deleteComment} voteComment={this.submitVoteComment} />                
               </section>
               : <h3> No Comment Available </h3> }
@@ -106,7 +92,6 @@ class PostDetailsPage extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state)
   return {
       post: state.postsStore.post,
       comment: state.commentsStore.comment,

@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import CategoriesList from '../components/categories-list';
 import PostList from '../components/posts-list';
-import { fetchCategories, fetchPosts, votePost , fetchComments, deletePost} from '../actions/action';
+import { fetchCategories, fetchPosts, votePost , fetchComments, deletePost} from '../actions/index';
 import sortBy from 'sort-by';
 import  SortOrders  from '../components/sort-orders';
 import { SubmissionError } from 'redux-form';
@@ -20,8 +20,6 @@ class RootPage extends Component {
 
   submitVotePost = (postId, vote) => {
   if(postId) {
-    console.log(postId)
-    console.log(vote)
     return this.props.votePost(postId, vote)
       .then(response => this.setState({ redirect:true}))
       .catch(err => {
@@ -31,7 +29,6 @@ class RootPage extends Component {
  }
 
 render() {
-console.log(this.props.allPostsComments)
     let sortedData = [];
     if(this.defaultSort){
        sortedData  = this.props.posts.sort(sortBy('-voteScore'))

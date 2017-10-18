@@ -1,6 +1,5 @@
 import React from 'react';
-import { Card, Button, Icon } from 'semantic-ui-react'
-import { Link } from 'react-router-dom';
+import { Card} from 'semantic-ui-react'
 import CategoryCard from './category-card';
 
 export default function CategoriesList({categories}){

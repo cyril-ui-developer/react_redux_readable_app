@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import CommentForm from '../components/comment-form';
 import { connect } from 'react-redux';
-import { newComment, saveComment, fetchPost, updateComment, fetchComment } from '../actions/action';
+import { newComment, saveComment, fetchPost, updateComment, fetchComment } from '../actions/index';
 import { SubmissionError } from 'redux-form';
 import { Redirect } from 'react-router';
 

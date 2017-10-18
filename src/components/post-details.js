@@ -1,7 +1,6 @@
 import React from 'react';
-import PostCard from './post-card';
 import { Link } from 'react-router-dom';
-import { Card, Button, Icon } from 'semantic-ui-react';
+import { Card, Icon } from 'semantic-ui-react';
 
 export default function PostDetails({postDetails, commentDetails, deletePost,votePost}){
 
@@ -21,8 +20,8 @@ export default function PostDetails({postDetails, commentDetails, deletePost,vot
             <span> {postDetails.voteScore} </span>
             <button onClick={()=>{ votePost(postDetails.id, "downVote") }}>-</button>
             Comment({commentDetails.length})
-            <Link to={`/post/edit/${postDetails.id}`} onClick={() => {  this.forceUpdate()}}> <Icon name='edit outline'/> </Link>
-            <Link to={`/`} ><Icon name='delete outline' onClick={() => deletePost(postDetails.id)}/> </Link>
+            <Link to={`/post/edit/${postDetails.id}`} onClick={() => {  this.forceUpdate()}}> <Icon name='edit'/> </Link>
+            <Link to={`/`} ><Icon name='delete' onClick={() => deletePost(postDetails.id)}/> </Link>
           </Card.Content>
           </Card>
         </div>
