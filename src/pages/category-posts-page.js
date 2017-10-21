@@ -35,11 +35,18 @@ class CategoryPostPage extends Component {
         <h1>List of {this.pageTitle} Category Posts</h1>
         { this.props.categoryPosts.length !== 0 ?
           <section>
-          <SortOrders unSortData={this.props.categoryPosts} onSortData={(sortedData) => {this.forceUpdate()}}/>
-          <CategoryPostList catPosts={sortedData} votePost={this.submitVotePost} deletePost={this.props.deletePost}
-           allPostsComments={this.props.allPostsComments}/>
+          <SortOrders 
+              unSortData={this.props.categoryPosts} 
+              onSortData={(sortedData) => {this.forceUpdate()}}
+          />
+          <CategoryPostList
+             catPosts={sortedData} 
+             votePost={this.submitVotePost} 
+             deletePost={this.props.deletePost}
+             allPostsComments={this.props.allPostsComments}
+          />
           </section>
-        : <p> No post Aaailable in this category  </p>}
+        : <p> No post available in this category  </p>}
       
       </div>
     )

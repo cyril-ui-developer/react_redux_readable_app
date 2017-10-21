@@ -1,21 +1,12 @@
 import { client } from './';
+import * as commentsModule from './comments-actions';
 
 const url_comments = '/comments';
-
-
-// export function fetchPostsComments(id){
-//   return dispatch => {
-//     dispatch({
-//       type: 'FETCH_POSTSCOMMENTS',
-//       payload: client.get(`${url_posts}/${id}/comments`)
-//     })
-//   }
-// }
 
 export function newComment() {
   return dispatch => {
     dispatch({
-      type: 'NEW_COMMENT'
+      type: commentsModule.NEW_COMMENT
     })
   }
 }
@@ -23,7 +14,7 @@ export function newComment() {
 export function saveComment(comment) {
   return dispatch => {
     return dispatch({
-      type: 'SAVE_COMMENT',
+      type: commentsModule.SAVE_COMMENT,
       payload: client.post(`${url_comments}`, comment)
     })
   }
@@ -32,7 +23,7 @@ export function saveComment(comment) {
 export function fetchComment(id) {
   return dispatch => {
     return dispatch({
-      type: 'FETCH_COMMENT',
+      type: commentsModule.FETCH_COMMENT,
       payload: client.get(`${url_comments}/${id}`)
     })
   }
@@ -41,7 +32,7 @@ export function fetchComment(id) {
 export function updateComment(comment) {
   return dispatch => {
     return dispatch({
-      type: 'UPDATE_COMMENT',
+      type: commentsModule.UPDATE_COMMENT,
       payload: client.put(`${url_comments}/${comment.id}`, comment)
     })
   }
@@ -51,7 +42,7 @@ export function deleteComment(id) {
   const obj = {deleted:true}
   return dispatch => {
     return dispatch({
-      type: 'DELETE_COMMENT',
+      type: commentsModule.DELETE_COMMENT,
       payload: client.delete(`${url_comments}/${id}`, obj)
     })
   }
@@ -61,7 +52,7 @@ export function deleteComment(id) {
    const reqObj ={option: vote} 
   return dispatch => {
     return dispatch({
-      type: 'VOTE_COMMENT',
+      type: commentsModule.VOTE_COMMENT,
       payload: client.post(`${url_comments}/${commentId}`, reqObj)
     })
   }

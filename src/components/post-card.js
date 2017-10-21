@@ -2,11 +2,11 @@ import React from 'react';
 import { Card, Button, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-let divStyle = {
+const divStyle = {
   margin: '3px'
 };
 
-let truncate  = { 
+const truncate  = { 
   width: '270px',
   whiteSpace: 'nowrap',
   overflow: 'hidden',

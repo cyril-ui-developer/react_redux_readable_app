@@ -1,4 +1,5 @@
 import { client } from './';
+import * as postsModule from './posts-actions';
 
 const url_posts = '/posts';
 
@@ -6,7 +7,7 @@ const url_posts = '/posts';
 export function fetchPosts(){
   return dispatch => {
     dispatch({
-      type: 'FETCH_POSTS',
+      type: postsModule.FETCH_POSTS,
       payload: client.get(url_posts)
     })
   }
@@ -15,7 +16,7 @@ export function fetchPosts(){
 export function newPost() {
   return dispatch => {
     dispatch({
-      type: 'NEW_POST'
+      type: postsModule.NEW_POST
     })
   }
 }
@@ -23,7 +24,7 @@ export function newPost() {
 export function savePost(post) {
   return dispatch => {
     return dispatch({
-      type: 'SAVE_POST',
+      type: postsModule.SAVE_POST,
       payload: client.post(url_posts, post)
     })
   }
@@ -32,7 +33,7 @@ export function savePost(post) {
 export function fetchPost(id) {
   return dispatch => {
     return dispatch({
-      type: 'FETCH_POST',
+      type: postsModule.FETCH_POST,
       payload: client.get(`${url_posts}/${id}`)
     })
   }
@@ -41,7 +42,7 @@ export function fetchPost(id) {
 export function updatePost(post) {
   return dispatch => {
     return dispatch({
-      type: 'UPDATE_POST',
+      type: postsModule.UPDATE_POST,
       payload: client.put(`${url_posts}/${post.id}`, post)
     })
   }
@@ -50,7 +51,7 @@ export function updatePost(post) {
 export function fetchCategoryPosts(cat) {
   return dispatch => {
     return dispatch({
-      type: 'FETCH_CATEGORYPOSTS',
+      type: postsModule.FETCH_CATEGORYPOSTS,
       payload: client.get(`${cat}${url_posts}`)
     })
   }
@@ -61,7 +62,7 @@ export function deletePost(id) {
   const obj = {deleted:true, parentDeleted:true}
   return dispatch => {
     return dispatch({
-      type: 'DELETE_POST',
+      type: postsModule.DELETE_POST,
       payload: client.delete(`${url_posts}/${id}`, obj)
     })
   }
@@ -71,7 +72,7 @@ export function deletePost(id) {
    const reqObj ={option: vote} 
   return dispatch => {
     return dispatch({
-      type: 'VOTE_POST',
+      type: postsModule.VOTE_POST,
       payload: client.post(`${url_posts}/${postId}`, reqObj)
     })
   }
@@ -80,7 +81,7 @@ export function deletePost(id) {
 export function fetchComments(id){
   return dispatch => {
     dispatch({
-      type: 'FETCH_COMMENTS',
+      type: postsModule.FETCH_COMMENTS,
       payload: client.get(`${url_posts}/${id}/comments`)
     })
   }

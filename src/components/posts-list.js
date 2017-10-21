@@ -7,7 +7,11 @@ export default function PostList({posts, votePost, deletePost}){
   const cards = () => {
     return posts.map(post => {
       return (
-        <PostCard key={post.title} post={post} votePost={votePost} deletePost={deletePost}/>
+        <PostCard 
+          key={post.title} post={post} 
+          votePost={votePost} 
+          deletePost={deletePost}
+        />
       )
     })
   }

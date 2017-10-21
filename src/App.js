@@ -10,6 +10,7 @@ import Page404 from './pages/page-404';
 import { Redirect } from 'react-router';
 import NoPostFoundPage from './pages/no-post-found-page';
 
+
 class App extends Component {
   render() {
     return (
@@ -31,7 +32,7 @@ class App extends Component {
           <Route  exact  path="/:category/comments/:id" component={CommentFormPage}/> 
           <Route  exact path="/nopostfound" component={ NoPostFoundPage }/> 
           <Route   exact path="/:name" component={CategoryPostPage}/>
-          <Redirect from='*' to={"/"}  component={Page404} />
+          <Redirect from="*" to={"/"} component={Page404} push={true}/>
         </Switch>
       </Container>
     );

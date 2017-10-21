@@ -20,7 +20,7 @@ class CommentDetails extends Component {
         <div>
          {this.props.commentDetails.map(comment => {
           return (
-            <div>  
+            <div key={comment.id}> 
                <p><strong>Content:</strong>{comment.body}</p>
                <p><strong>Date/Time:</strong> {(new Date(comment.timestamp)).toString()}</p>
                <p><strong> Author: </strong>{comment.author}</p>

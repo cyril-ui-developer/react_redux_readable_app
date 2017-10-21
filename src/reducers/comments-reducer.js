@@ -1,4 +1,6 @@
 //import { _ } from 'underscore'
+import * as commentsModule from '../actions/comments-actions';
+import { FULFILLED} from '../actions/comments-actions';
 
 const defaultState = {
   comments:[],
@@ -9,37 +11,22 @@ const defaultState = {
 export default (state=defaultState, action={}) => {
   switch (action.type) {
 
-  case 'NEW_POST': {
+  case commentsModule.NEW_COMMENT: {
       return {
         ...state,
         comment: {}
       }
     }
     
-  case 'SAVE_COMMENT_FULFILLED': {
+  case commentsModule.SAVE_COMMENT+FULFILLED: {
       return {
         ...state,
         comments: [...state.comments, action.payload.data]
       }
     }
 
-    case "FETCH_COMMENTS_FULFILLED": {
-      return {
-        ...state,
-        comments: action.payload.data
-      }
-    }
 
-    // case "FETCH_POSTSCOMMENTS_FULFILLED": {
-    //   return {
-    //     ...state,
-    //      // allPostsComments: [...state.allPostsComments, ...action.payload.data],
-    //      allPostsComments: _.uniq([...state.allPostsComments, ...action.payload.data], function(c, id){ return c.id })
-          
-    //   }
-    // }
-
-   case 'FETCH_COMMENT_FULFILLED': {
+   case commentsModule.FETCH_COMMENT+FULFILLED: {
       return {
         ...state,
         comment: action.payload.data
@@ -47,7 +34,7 @@ export default (state=defaultState, action={}) => {
       }
     }
 
-    case 'UPDATE_COMMENT_FULFILLED': {
+    case commentsModule.UPDATE_COMMENT+FULFILLED: {
       const comment = action.payload.data;
       return {
         ...state,
@@ -55,7 +42,7 @@ export default (state=defaultState, action={}) => {
       }
     }
 
-    case 'DELETE_COMMENT_FULFILLED': {
+    case commentsModule.DELETE_COMMENT+FULFILLED: {
     const id = action.payload.data.id;
     return {
       ...state,
@@ -64,7 +51,7 @@ export default (state=defaultState, action={}) => {
   }
 
 
-     case 'VOTE_COMMENT_FULFILLED': {
+     case commentsModule.VOTE_COMMENT+FULFILLED: {
       const comment = action.payload.data;
       return {
         ...state,

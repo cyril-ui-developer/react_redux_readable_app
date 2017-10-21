@@ -4,20 +4,12 @@ import { connect } from 'react-redux';
 import { newPost, savePost, updatePost, fetchPost, fetchCategories } from '../actions/index';
 import { SubmissionError } from 'redux-form';
 import { Redirect } from 'react-router';
+import { uniqueId } from '../helper-functions/unique-id'
 
 class PostFormPage extends Component {
 
   state = {
     redirect: false
-  }
-  uniqueId = () => {
-    function randomNumber() {
-      return Math.floor((1 + Math.random()) * 0x10000)
-        .toString(16)
-        .substring(1);
-    }
-    return randomNumber() + randomNumber() + '-' + randomNumber() + '-' + randomNumber() + '-' +
-      randomNumber() + '-' + randomNumber() + randomNumber() + randomNumber();
   }
 
   componentDidMount() {
@@ -34,7 +26,7 @@ class PostFormPage extends Component {
 submit = (post) => {
   if(!post.id) {
     let datetime = Date.now();
-    post.id = this.uniqueId();
+    post.id = uniqueId();
     post.timestamp = datetime;
     return this.props.savePost(post)
       .then(response => this.setState({ redirect:true}))

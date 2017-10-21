@@ -4,20 +4,12 @@ import { connect } from 'react-redux';
 import { newComment, saveComment, fetchPost, updateComment, fetchComment } from '../actions/index';
 import { SubmissionError } from 'redux-form';
 import { Redirect } from 'react-router';
+import { uniqueId } from '../helper-functions/unique-id'
 
 class CommentFormPage extends Component {
 
   state = {
     redirect: false
-  }
-  uniqueId = () => {
-    function randomNumber() {
-      return Math.floor((1 + Math.random()) * 0x10000)
-        .toString(16)
-        .substring(1);
-    }
-    return randomNumber() + randomNumber() + '-' + randomNumber() + '-' + randomNumber() + '-' +
-      randomNumber() + '-' + randomNumber() + randomNumber() + randomNumber();
   }
 
   componentDidMount() {
@@ -34,7 +26,7 @@ class CommentFormPage extends Component {
 submit = (comment) => {
   if(!comment.id) {
     let datetime = Date.now();
-    comment.id = this.uniqueId();
+    comment.id = uniqueId();
     comment.timestamp = datetime;
     comment.parentId= this.props.post.id;
 

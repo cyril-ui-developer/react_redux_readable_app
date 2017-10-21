@@ -1,3 +1,6 @@
+import * as postsModule from '../actions/posts-actions';
+import {FETCH_CATEGORIES,  FULFILLED} from '../actions/posts-actions';
+
 const defaultState = {
   categories: [],
   posts:[],
@@ -9,46 +12,41 @@ const defaultState = {
 
 export default (state=defaultState, action={}) => {
   switch (action.type) {
-    case "FETCH_CATEGORIES_FULFILLED": {
+    case postsModule.FETCH_CATEGORIES + FULFILLED: {
       return {
         ...state,
         categories: action.payload.data.categories
       }
     }
 
-    case 'FETCH_CATEGORYPOSTS_FULFILLED': {
+    case postsModule.FETCH_CATEGORYPOSTS + FULFILLED: {
       return {
         ...state,
         categoryPosts: action.payload.data
       }
     }
-    // case "FETCH_COMMENTS_FULFILLED": {
-    //   return {
-    //     ...state,
-    //     comments: action.payload.data
-    //   }
-    // }
-   case "FETCH_POSTS_FULFILLED": {
+
+   case postsModule.FETCH_POSTS + FULFILLED: {
       return {
         ...state,
         posts: action.payload.data
       }
     }
-    case 'NEW_POST': {
+    case postsModule.NEW_POST + FULFILLED: {
       return {
         ...state,
         post: {}
       }
     }
 
-    case 'SAVE_POST_FULFILLED': {
+    case postsModule.SAVE_POST + FULFILLED: {
       return {
         ...state,
         posts: [...state.posts, action.payload.data],
       }
     }
 
-    case 'FETCH_POST_FULFILLED': {
+    case postsModule.FETCH_POST + FULFILLED: {
       return {
         ...state,
         post: action.payload.data
@@ -56,7 +54,7 @@ export default (state=defaultState, action={}) => {
       }
     }
 
-    case 'UPDATE_POST_FULFILLED': {
+    case postsModule.UPDATE_POST + FULFILLED: {
       const post = action.payload.data;
       return {
         ...state,
@@ -65,16 +63,7 @@ export default (state=defaultState, action={}) => {
       }
     }
 
-  
-  // case 'NEW_POST': {
-  //     return {
-  //       ...state,
-  //       comment: {}
-  //     }
-  //   }
-  
-
-    case 'DELETE_POST_FULFILLED': {
+    case postsModule.DELETE_POST + FULFILLED: {
       const id = action.payload.data.id;
       return {
         ...state,
@@ -85,12 +74,12 @@ export default (state=defaultState, action={}) => {
     }
   
 
-    case 'VOTE_POST_FULFILLED': {
+    case postsModule.VOTE_POST + FULFILLED: {
       const post = action.payload.data;
       return {
         ...state,
        posts: state.posts.map(p => p.id === post.id ? post: p),
-       post:  post,
+       post,
        categoryPosts: state.categoryPosts.map(p => p.id === post.id ? post: p)
 
       }

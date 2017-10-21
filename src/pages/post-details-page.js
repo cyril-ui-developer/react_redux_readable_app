@@ -15,14 +15,12 @@ class PostDetailsPage extends Component {
   state = {
     redirect: false
   }
-  uniqueId = () => {
-    function randomNumber() {
-      return Math.floor((1 + Math.random()) * 0x10000)
-        .toString(16)
-        .substring(1);
-    }
-    return randomNumber() + randomNumber() + '-' + randomNumber() + '-' + randomNumber() + '-' +
-      randomNumber() + '-' + randomNumber() + randomNumber() + randomNumber();
+
+  componentDidMount() {   
+    const { id} = this.props.match.params;
+    this.props.fetchPost(id);
+    this.props.fetchComments(id)
+    this.defaultSort = true;
   }
 
   submitVotePost = (postId, vote) => {
@@ -46,13 +44,6 @@ class PostDetailsPage extends Component {
   }
   }
 
-  componentDidMount() {   
-    const { id} = this.props.match.params;
-    this.props.fetchPost(id);
-    this.props.fetchComments(id)
-    this.defaultSort = true;
-  }
-
   render() {
     let sortedData = [];
     let sortedComments = this.props.comments;
@@ -68,18 +59,30 @@ class PostDetailsPage extends Component {
         <div> 
             <NavLink className='close-create-contact' to='/'>Back</NavLink>
             <h1>Post Details</h1> <br />
-            <PostDetails key={this.props.post.id} postDetails={this.props.post} commentDetails={this.props.comments}  deletePost={this.props.deletePost}
-             votePost={this.submitVotePost}/>        
+            <PostDetails 
+                key={this.props.post.id} 
+                postDetails={this.props.post} 
+                commentDetails={this.props.comments}  
+                deletePost={this.props.deletePost}
+                votePost={this.submitVotePost}
+            />        
             <br />   <br />   <br />
             <Link to={`/commentnew`}>  Add New Comment </Link>
             <hr />
              { this.props.comments.length !== 0 ?
                <section>
                 <h3> Comments </h3> 
-                <SortOrders unSortData={this.props.comments} onSortData={(sortedData) => {this.forceUpdate() ; this.defaultSort = false}}/>
+                <SortOrders 
+                   unSortData={this.props.comments} 
+                   onSortData={(sortedData) => {this.forceUpdate() ; this.defaultSort = false}}
+                />
                   <br /> <br />
-                <CommentDetails key={this.props.post.id} post={this.props.post} commentDetails={ sortedComments } onComment={(comment) => {}}  
-                deleteComment={this.props.deleteComment} voteComment={this.submitVoteComment} />                
+                <CommentDetails 
+                   key={this.props.post.id} 
+                   post={this.props.post} 
+                   commentDetails={ sortedComments } onComment={(comment) => {}}  
+                   deleteComment={this.props.deleteComment} voteComment={this.submitVoteComment} 
+                />                
               </section>
               : <h3> No Comment Available </h3> }
            </div>
