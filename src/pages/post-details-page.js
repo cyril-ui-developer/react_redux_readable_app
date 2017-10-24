@@ -87,9 +87,8 @@ class PostDetailsPage extends Component {
                 />                
               </section>
               : <h3> No Comment Available </h3> }
-              
-           </div>
          
+           </div>
          : <Page404 />}
           {this.state.redirect ?
           <Redirect to="/" /> :null}
