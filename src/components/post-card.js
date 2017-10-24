@@ -17,7 +17,6 @@ export default function PostCard({post, deletePost, votePost}) {
 //  postComments = allPostsComments.filter(c => c.parentId === post.id)
   return (
     <div style={divStyle}>
-      { !post.deleted? 
           <Card>
             <Card.Content>
               <Card.Header>
@@ -36,7 +35,6 @@ export default function PostCard({post, deletePost, votePost}) {
               </Card.Description>
             </Card.Content>
           </Card>
-    : null }
   </div>
   )
 }
