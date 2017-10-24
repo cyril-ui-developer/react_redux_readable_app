@@ -85,6 +85,12 @@ export default (state=defaultState, action={}) => {
       }
     }
     
+    case postsModule.FETCH_COMMENTS + FULFILLED: {
+           return {
+           ...state,
+             comments: action.payload.data
+           }
+      }
         default:
           return state;
       }

@@ -26,13 +26,13 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={RootPage}/>
           <Route exact  path="/posts/new" component={PostFormPage}/>
-          <Route  exact  path="/post/edit/:id" component={PostFormPage}/>
-          <Route  exact path="/:category/:id" component={PostDetailsPage}/>
-          <Route  exact path="/commentnew" component={CommentFormPage}/> 
-          <Route  exact  path="/:category/comments/:id" component={CommentFormPage}/> 
-          <Route  exact path="/nopostfound" component={ NoPostFoundPage }/> 
-          <Route   exact path="/:name" component={CategoryPostPage}/>
-          <Redirect from="*" to={"/"} component={Page404} push={true}/>
+          <Route exact path="/post/edit/:id" component={PostFormPage}/>
+          <Route exact path="/:category/:id" component={PostDetailsPage}/>
+          <Route exact path="/commentnew" component={CommentFormPage}/> 
+          <Route exact  path="/:category/comments/:id" component={CommentFormPage}/> 
+          <Route exact path="/nopostfound" component={ NoPostFoundPage }/> 
+          <Route exact path="/:name" component={CategoryPostPage}/>
+          <Route component={Page404}/>
         </Switch>
       </Container>
     );

@@ -9,6 +9,7 @@ import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 import sortBy from 'sort-by';
 import  SortOrders  from '../components/sort-orders';
+import Page404 from './page-404';
 
 class PostDetailsPage extends Component {
 
@@ -55,10 +56,11 @@ class PostDetailsPage extends Component {
   
     return (
       <div>
-           {/*{ (Object.keys(this.props.post).length !== 0) ?*/}
+           { (Object.keys(this.props.post).length !== 0) ?
         <div> 
             <NavLink className='close-create-contact' to='/'>Back</NavLink>
             <h1>Post Details</h1> <br />
+            
             <PostDetails 
                 key={this.props.post.id} 
                 postDetails={this.props.post} 
@@ -85,10 +87,13 @@ class PostDetailsPage extends Component {
                 />                
               </section>
               : <h3> No Comment Available </h3> }
+              
            </div>
-           {/*: <Redirect to="/nopostfound" />}    */}
+         
+         : <Page404 />}
           {this.state.redirect ?
           <Redirect to="/" /> :null}
+
        </div>
     )
   }
@@ -98,7 +103,7 @@ function mapStateToProps(state) {
   return {
       post: state.postsStore.post,
       comment: state.commentsStore.comment,
-      comments: state.commentsStore.comments     
+      comments: state.postsStore.comments     
   }
 }
 
