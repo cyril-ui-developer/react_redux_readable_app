@@ -103,7 +103,7 @@ function mapStateToProps(state) {
   return {
       post: state.postsStore.post,
       comment: state.commentsStore.comment,
-      comments: state.postsStore.comments     
+      comments: state.commentsStore.comments     
   }
 }
 

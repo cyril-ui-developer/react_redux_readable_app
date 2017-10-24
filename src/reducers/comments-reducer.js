@@ -55,10 +55,19 @@ export default (state=defaultState, action={}) => {
       const comment = action.payload.data;
       return {
         ...state,
-        comments: state.comments.map(c => c.id === comment.id ? comment: c)
+        comments: state.comments.map(c => c.id === comment.id ? comment: c),
+        comment
  
       }
     }
+   
+    case commentsModule.FETCH_COMMENTS + FULFILLED: {
+      return {
+      ...state,
+        comments: action.payload.data
+      }
+ }
+
         default:
           return state;
       }

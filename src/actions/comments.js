@@ -2,6 +2,7 @@ import { client } from './';
 import * as commentsModule from './comments-actions';
 
 const url_comments = '/comments';
+const url_posts = '/posts';
 
 export function newComment() {
   return dispatch => {
@@ -57,3 +58,12 @@ export function deleteComment(id) {
     })
   }
  }
+
+ export function fetchComments(id){
+  return dispatch => {
+    dispatch({
+      type: commentsModule.FETCH_COMMENTS,
+      payload: client.get(`${url_posts}/${id}/comments`)
+    })
+  }
+}

@@ -78,11 +78,11 @@ export function deletePost(id) {
   }
 }
 
-export function fetchComments(id){
-  return dispatch => {
-    dispatch({
-      type: postsModule.FETCH_COMMENTS,
-      payload: client.get(`${url_posts}/${id}/comments`)
-    })
-  }
-}
+// export function fetchComments(id){
+//   return dispatch => {
+//     dispatch({
+//       type: postsModule.FETCH_COMMENTS,
+//       payload: client.get(`${url_posts}/${id}/comments`)
+//     })
+//   }
+// }
