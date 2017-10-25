@@ -5,27 +5,8 @@ import { Field, reduxForm } from 'redux-form';
 //import { Field, reduxForm } from 'redux-form/immutable'
 import { NavLink } from 'react-router-dom';
 import classnames from 'classnames';
+import { validate } from "../helper-functions/validate";
 
-
-const validate = (values) => {
-  const errors = {};
-  if(!values.name || !values.name) {
-    errors.name = {
-      message: 'You need to select category'
-    }
-  }
-  if(!values.title || !values.title) {
-    errors.title = {
-      message: 'You need to enter title'
-    }
-  }
-  if(!values.author || !values.author) {
-    errors.author = {
-      message: 'You need to enter author'
-    }
-  }
-  return errors;
-}
 
 class PostForm extends Component {
   componentDidMount() {
@@ -63,14 +44,14 @@ authorField = ({ input, label,name, type,value, meta: { touched, error } }) => (
       {touched && error && <span className="error">{error.message}</span>}
     </Form.Field>
   )
- renderTextareaField = ({ input, label, type, meta: { touched, error } }) => (
+ bodyField = ({ input, label, type, meta: { touched, error } }) => (
     <Form.Field>
       <label>{label}</label>
       <textarea {...input}  maxLength="1000"/>
       <div>Maximum Chararcters {input.value.length}  of 1000</div>
     </Form.Field>
   )
- renderSelectField = ({ input, option, label, type, meta: { touched, error } }) => (
+ categoryField = ({ input, option, label, type, meta: { touched, error } }) => (
     <Form.Field>
       <label>{label}</label>
       <select {...input}>
@@ -108,19 +89,10 @@ InputField = ({
          {post.id ?   <NavLink className='close-create-contact' to={`/${post.category}/${post.id}`}>Back</NavLink>  : ''}
            <h1 style={{marginTop:"1em"}}>{post.id ? 'Edit Post' : 'Add New Post'}</h1>
           <Form onSubmit={handleSubmit}> 
-          {post.category}
-            <Field name="category"  component={this.renderSelectField} label="Select a Category"/> 
+            <Field name="category"  component={this.categoryField} label="Select a Category"/> 
             <Field name="title" type="text" component={this.titleField} label=" Enter Title"/>
-            <Field name="body" component={this.renderTextareaField} label="Enter Post"/>
+            <Field name="body" component={this.bodyField} label="Enter Post"/>
             <Field name="author" type="text"  component={this.authorField} label="Enter Author's Fullname"/>
-
-            {/* <Field type="text" name="title" component={this.InputField}  label="Email" />
-            <Field
-             type="text"
-             name="author"
-             component={this.InputField}
-             label="Password"
-             /> */}
             <Button  type="button" disabled={pristine || submitting} onClick={reset}>Reset</Button>
             <Button primary type='submit' disabled={pristine || submitting}>Save</Button>
 
