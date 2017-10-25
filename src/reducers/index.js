@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-//import readable from './readable-reducer';
 import { reducer as formReducer } from 'redux-form';
 import postsReducer from './posts-reducer';
 import commentsReducer  from './comments-reducer';

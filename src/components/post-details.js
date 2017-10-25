@@ -20,7 +20,7 @@ export default function PostDetails({postDetails, commentDetails, deletePost,vot
             <span> {postDetails.voteScore} </span>
             <button onClick={()=>{ votePost(postDetails.id, "downVote") }}>-</button>
             Comment({commentDetails.length})
-            <Link to={`/post/edit/${postDetails.id}`} onClick={() => {  this.forceUpdate()}}> <Icon name='edit'/> </Link>
+            <Link to={`/post/edit/${postDetails.id}`}> <Icon name='edit'/> </Link>
             <Link to={`/`} ><Icon name='delete' onClick={() => deletePost(postDetails.id)}/> </Link>
           </Card.Content>
           </Card>

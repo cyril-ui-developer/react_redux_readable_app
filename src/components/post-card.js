@@ -30,7 +30,7 @@ export default function PostCard({post, deletePost, votePost}) {
                   <span> {post.voteScore} </span>
                   <button onClick={()=>{ votePost(post.id, "downVote") }}>-</button>
                     Comment({post.commentCount})
-                  <Link to={`/post/edit/${post.id}`} onClick={() => {  this.forceUpdate()}}> <Icon name='edit'/> </Link>
+                  <Link to={`/post/edit/${post.id}`}> <Icon name='edit'/> </Link>
                   <Link to={`/`} ><Icon name='delete' onClick={() => {deletePost(post.id)}}/> </Link>
               </Card.Description>
             </Card.Content>
