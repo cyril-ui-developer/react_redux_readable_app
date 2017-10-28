@@ -10,7 +10,7 @@ class CommentFormPage extends Component {
 
   state = {
     redirect: false
-  }
+  };
 
   componentDidMount() {
     const { id } = this.props.match.params;

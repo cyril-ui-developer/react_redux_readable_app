@@ -1,9 +1,9 @@
     
- export function uniqueId(){
+export function uniqueId(){
     function randomNumber() {
-      return Math.floor((1 + Math.random()) * 0x10000)
-        .toString(16)
-        .substring(1);
+        return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
     }
-    return randomNumber() + '-' + randomNumber() + '-' + randomNumber();
-  }
+    return randomNumber() + "-" + randomNumber() + "-" + randomNumber();
+}

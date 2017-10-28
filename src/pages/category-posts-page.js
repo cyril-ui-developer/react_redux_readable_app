@@ -11,18 +11,13 @@ import { Redirect } from 'react-router';
 
 class CategoryPostPage extends Component {
   
-
-  
   componentDidMount() {
     const { name } = this.props.match.params;
     const pageTitle = name;
     this.props.fetchCategoryPosts(name);
     console.log(pageTitle )
-    let box = "lloop"
   }
-  state = {
-    vox : this.name
-  }
+
   submitVotePost = (postId, vote) => {
   if(postId) {
     return this.props.votePost(postId, vote)
@@ -38,7 +33,7 @@ class CategoryPostPage extends Component {
     return (
       <div>
        <NavLink className='close-create-contact' to='/'>Back</NavLink>
-        <h1>List of {this.state.vox} Category Posts</h1>
+        <h1>List of Category Posts</h1>
         { this.props.categoryPosts.length !== 0 ?
           <section>
           <SortOrders 
