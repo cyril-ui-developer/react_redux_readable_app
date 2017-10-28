@@ -65,7 +65,7 @@ authorField = ({ input, label,name, type,value, meta: { touched, error } }) => (
  categoryField = ({ input, option, label, type, meta: { touched, error }, children}) => (
     <Form.Field>
       <label>{label}</label>
-      <select {...input} className="titleText" >
+      <select {...input} className="title-text" >
      <option disabled>Select a Category</option>
       
       {children}

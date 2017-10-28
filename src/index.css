@@ -6,6 +6,10 @@ body {
 .error {
   color: #9f3a38;
 }
-.titleText {
+.title-text {
   text-transform: capitalize
+}
+.text-wrap {
+  width: 25em; 
+  word-wrap: break-word;
 }

@@ -8,7 +8,7 @@ export default function PostList({posts, votePost, deletePost}){
         return posts.map(post => {
             return (
                 <PostCard 
-                    key={post.title} post={post} 
+                    key={post.id} post={post} 
                     votePost={votePost} 
                     deletePost={deletePost}
                 />
