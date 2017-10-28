@@ -25,11 +25,11 @@ export default function PostCard({post, deletePost, votePost}) {
                     <Card.Description>
                         <p style={truncate}>{post.body}</p>
                         <p>{(new Date(post.timestamp)).toString()}</p>
-                        <p>Author: {post.author}</p>
+                        <p style={truncate}>Author: {post.author}</p>
                         <button onClick={()=>{ votePost(post.id, "upVote");}}>+</button>
                         <span> {post.voteScore} </span>
                         <button onClick={()=>{ votePost(post.id, "downVote"); }}>-</button>
-                    Comment({post.commentCount})
+                           Comment({post.commentCount})
                         <Link to={`/post/edit/${post.id}`}> <Icon name='edit'/> </Link>
                         <Link to={"/"} ><Icon name='delete' onClick={() => {deletePost(post.id);}}/> </Link>
                     </Card.Description>

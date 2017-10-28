@@ -65,7 +65,7 @@ authorField = ({ input, label,name, type,value, meta: { touched, error } }) => (
  categoryField = ({ input, option, label, type, meta: { touched, error }, children}) => (
     <Form.Field>
       <label>{label}</label>
-      <select {...input} >
+      <select {...input} className="titleText" >
      <option disabled>Select a Category</option>
       
       {children}
@@ -91,7 +91,7 @@ authorField = ({ input, label,name, type,value, meta: { touched, error } }) => (
            <h1 style={{marginTop:"1em"}}>{post.id ? 'Edit Post' : 'Add New Post' }</h1>
           <Form onSubmit={handleSubmit}> 
             <Field name="category"  component={this.categoryField} label="Select a Category" validate={required}>
-            { this.props.categories.map(option => <option value={option.name}>{option.name}</option>) }  </Field>
+            { this.props.categories.map(option => <option key={option.path} value={option.name}>{option.name}</option>) }  </Field>
             <Field name="title" type="text" component={this.titleField} label=" Enter Title" validate={required}/>
             <Field name="body" component={this.bodyField} label="Enter Post" validate={required}/>
             <Field name="author" type="text"  component={this.authorField} label="Enter Author's Fullname" validate={required}/>

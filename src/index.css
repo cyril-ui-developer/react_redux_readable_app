@@ -6,3 +6,6 @@ body {
 .error {
   color: #9f3a38;
 }
+.titleText {
+  text-transform: capitalize
+}
